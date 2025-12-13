@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile - Niseva Agro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset dan Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1b5e20 0%, #1b5e20 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    }
+
+   .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #1b5e20;
+      border: 2px solid #1b5e20;
+    }
+
+    .btn-outline:hover {
+      background-color: #1b5e20;
+      color: white;
+    }
+
+    /* =========================== */
+    /* NAVBAR STYLES (SAMA DENGAN HOME) */
+    /* =========================== */
+    
+    /* Navbar Container */
+    .navbar-wrapper {
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: transparent;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Logo Section */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Navigation Links */
+    .nav-center {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-center li {
+      position: relative;
+    }
+
+    .nav-center a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    .nav-center a:hover,
+    .nav-center a.active {
+      color: #1b5e20;
+      background: rgba(76, 175, 80, 0.1);
+    }
+
+    /* Right Section */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .user-profile:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .user-profile span {
+      font-weight: 600;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    /* User Avatar di Navbar */
+    .nav-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+      padding: 8px;
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 1200px) {
+      .navbar {
+        max-width: 95%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav-center {
+        gap: 1.5rem;
+      }
+      
+      .nav-center a {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-wrapper {
+        padding: 0.8rem 1rem;
+      }
+
+      .navbar {
+        padding: 0.6rem 1.5rem;
+        border-radius: 40px;
+      }
+
+      .nav-center {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        margin: 10px;
+        z-index: 1000;
+        transform: translateX(0);
+        position: absolute;
+        left: 0;
+      }
+
+      .nav-center.active {
+        display: flex;
+      }
+
+      .nav-center li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-center a {
+        justify-content: center;
+        padding: 12px 20px;
+        border-radius: 16px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 0.6rem 1rem;
+      }
+
+      .logo span {
+        display: none;
+      }
+    }
+
+    /* =========================== */
+    /* PROFILE HERO */
+    /* =========================== */
+    .profile-hero {
+      background: linear-gradient(135deg, #1b5e20 0%, #1b5e20 100%);
+      color: white;
+      padding: 150px 0 80px;
+      margin-top: 0;
+    }
+
+    .profile-hero-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .profile-hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .profile-hero-content p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    /* Profile Content */
+    .profile-content {
+      padding: 60px 0;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 30px;
+    }
+
+    /* Sidebar */
+    .profile-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .profile-header {
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      padding: 30px 20px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: white;
+      color: #1b5e20;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      color: #1b5e20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+      border: 4px solid white;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all 0.3s ease;
+    }
+
+    .profile-avatar:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-avatar.has-photo {
+      color: transparent;
+    }
+
+    .profile-info {
+      padding: 20px;
+    }
+
+    .profile-name {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .profile-role {
+      color: #666;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .profile-stats .stat {
+      text-align: center;
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 16px;
+    }
+
+    .profile-stats .stat-number {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 5px;
+    }
+
+    .profile-stats .stat-label {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* Modal untuk Upload Foto */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #333;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    /* Upload Area Styles */
+    .upload-area {
+      border: 2px dashed #e0e0e0;
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .upload-area:hover {
+      border-color: #1b5e20;
+      background: rgba(76, 175, 80, 0.05);
+    }
+
+    .upload-area.drag-over {
+      border-color: #1b5e20;
+      background: rgba(46, 125, 50, 0.1);
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      color: #1b5e20;
+      margin-bottom: 15px;
+    }
+
+    .upload-text {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .upload-subtext {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .upload-btn {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #333;
+      transition: all 0.3s;
+    }
+
+    .upload-btn:hover {
+      background: #e0e0e0;
+    }
+
+    #imagePreview {
+      display: none;
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 12px;
+      margin: 0 auto 20px;
+    }
+
+    .preview-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .remove-preview {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .remove-preview:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .crop-container {
+      max-height: 300px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    /* Main Content */
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .content-section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      padding: 30px;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: #333;
+      font-weight: 700;
+    }
+
+    /* Form Styles */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    /* Investment Portfolio */
+    .investment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .investment-card {
+      background: #f5f5f5;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .investment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .investment-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .investment-badge {
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      border-radius: 4px;
+    }
+
+    .investment-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Activity Feed */
+    .activity-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .activity-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 16px;
+      align-items: flex-start;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .activity-content {
+      flex: 1;
+    }
+
+    .activity-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .activity-desc {
+      color: #666;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+
+    .activity-time {
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background-color: #1b5e20;
+      transform: translateY(-3px);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .contact-item i {
+      color: #1b5e20;
+      margin-top: 2px;
+      font-size: 1rem;
+    }
+
+    .copyright {
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+
+    .copyright i {
+      color: #e53935;
+    }
+
+    /* Message Container */
+    #messageContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      max-width: 400px;
+    }
+
+    .message {
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      animation: slideIn 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border-left: 4px solid #1b5e20;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border-left: 4px solid #dc3545;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* =========================== */
+    /* RESPONSIVE MEDIA QUERIES   */
+    /* =========================== */
+    
+    /* Tablet (768px - 992px) */
+    @media (max-width: 992px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .profile-sidebar {
+        position: relative;
+        top: 0;
+      }
+      
+      .form-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .investment-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+    
+    /* Mobile (480px - 768px) */
+    @media (max-width: 768px) {
+      .profile-hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .profile-hero-content p {
+        font-size: 1rem;
+      }
+      
+      .profile-hero {
+        padding: 120px 0 40px;
+      }
+      
+      .profile-content {
+        padding: 30px 0;
+      }
+      
+      .content-section {
+        padding: 20px;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-actions {
+        flex-direction: column;
+      }
+      
+      .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .investment-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      
+      .social-links {
+        justify-content: center;
+      }
+      
+      .modal-content {
+        width: 95%;
+        margin: 10px;
+      }
+    }
+    
+    /* Small Mobile (< 480px) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .profile-hero-content h1 {
+        font-size: 1.5rem;
+      }
+      
+      .profile-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+      }
+      
+      .profile-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .profile-name {
+        font-size: 1.3rem;
+      }
+      
+      .profile-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .profile-stats .stat {
+        padding: 12px 8px;
+      }
+      
+      .profile-stats .stat-number {
+        font-size: 1.2rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      #messageContainer {
+        left: 15px;
+        right: 15px;
+        top: 10px;
+        max-width: none;
+      }
+      
+      .message {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .activity-icon {
+        align-self: flex-start;
+      }
+      
+      .upload-area {
+        padding: 30px 15px;
+      }
+      
+      .upload-icon {
+        font-size: 2.5rem;
+      }
+    }
+    
+    /* Large Desktop (> 1400px) */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+      
+      .profile-content {
+        padding: 0;
+      }
+      
+      .profile-grid {
+        display: block;
+      }
+      
+      .content-section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+  <!-- Navigation (NAVBAR BARU YANG SAMA DENGAN HOME) -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="home.html" class="logo">
+        <div class="logo-icon">
+          <img src="folderimage/logo.jpg" style="width: 45px; height: 45px; border-radius: 50%;">
+        </div>
+        <span>NISEVA</span>
+      </a>
+
+      <!-- Center Navigation -->
+      <ul class="nav-center" id="navMenu">
+        <li><a href="home.php">Dashboard</a></li>
+        <li><a href="investasi.html">Investasi</a></li>
+        <li><a href="marketplace.html">Belanja</a></li>
+        <li><a href="artikel.html">Artikel</a></li>
+      </ul>
+
+      <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <span id="userName">Laras Wati</span>
+          <div class="nav-avatar" id="navAvatar">LW</div>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Profile Hero -->
+  <section class="profile-hero">
+    <div class="container">
+      <div class="profile-hero-content">
+        <h1>Profile Saya</h1>
+        <p>Kelola informasi akun dan pantau aktivitas investasi pertanian Anda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Content -->
+  <section class="profile-content">
+    <div class="container">
+      <div class="profile-grid">
+        <!-- Sidebar -->
+        <aside class="profile-sidebar">
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="profile-badge">Premium</div>
+              <div class="profile-avatar" id="profileAvatar" style="background-image: none;">LW</div>
+            </div>
+            <div class="profile-info">
+              <h2 class="profile-name" id="sidebarName">Laras Wati</h2>
+              
+              <div class="profile-stats">
+                <div class="stat">
+                  <span class="stat-number">12</span>
+                  <span class="stat-label">Bulan</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label">Proyek</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">Rp 15.2Jt</span>
+                  <span class="stat-label">Investasi</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number">98%</span>
+                  <span class="stat-label">Success</span>
+                </div>
+              </div>
+
+            
+               
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="profile-main">
+          <!-- Success/Error Messages -->
+          <div id="messageContainer"></div>
+
+          <!-- Personal Information -->
+          <section class="content-section">
+            <div class="section-header">
+              <h3 class="section-title">Informasi Pribadi</h3>
+            </div>
+
+            <form id="profileForm" class="form-grid" method="POST" action="../backend/update_profile.php">
+              <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <div class="input-group">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="nama" name="nama" value="Laras Wati" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="user_id">ID Pengguna</label>
+                <div class="input-group">
+                  <i class="fas fa-id-card"></i>
+                  <input type="text" id="user_id" name="user_id" value="NSV001234" readonly style="background: #f8fafc;">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-group">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="email" name="email" value="laras.wati@email.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="telepon">Telepon</label>
+                <div class="input-group">
+                  <i class="fas fa-phone"></i>
+                  <input type="tel" id="telepon" name="telepon" value="+62 812-3456-7890" required>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="alamat">Alamat</label>
+                <div class="input-group">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <textarea id="alamat" name="alamat">Jl. Pertanian Modern No. 123, Bandung, Jawa Barat 40614</textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="provinsi">Provinsi</label>
+                <div class="input-group">
+                  <i class="fas fa-map"></i>
+                  <select id="provinsi" name="provinsi">
+                    <option value="jawa-barat" selected>Jawa Barat</option>
+                    <option value="jawa-tengah">Jawa Tengah</option>
+                    <option value="jawa-timur">Jawa Timur</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="kota">Kota</label>
+                <div class="input-group">
+                  <i class="fas fa-city"></i>
+                  <input type="text" id="kota" name="kota" value="Bandung">
+                </div>
+              </div>
+
+              <div class="form-actions full-width">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save"></i> Simpan Perubahan
+                </button>
+                <button type="button" class="btn btn-outline" onclick="resetForm()">
+                  <i class="fas fa-times"></i> Reset
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Investment Portfolio -->
+          <section class="content-section">
+            <div class="section-header">
+              <h3 class="section-title">Portfolio Investasi</h3>
+            </div>
+
+            <div class="investment-grid">
+              <div class="investment-card">
+                <div class="investment-header">
+                  <div>
+                    <h4 class="investment-title">Padi Organik Karawang</h4>
+                    <div class="investment-badge">Aktif</div>
+                  </div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <div class="investment-meta">
+                  <span>Rp 5.000.000</span>
+                  <span>75% Terkumpul</span>
+                </div>
+              </div>
+
+              <div class="investment-card">
+                <div class="investment-header">
+                  <div>
+                    <h4 class="investment-title">Kopi Arabika Temanggung</h4>
+                    <div class="investment-badge">Aktif</div>
+                  </div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 63%"></div>
+                </div>
+                <div class="investment-meta">
+                  <span>Rp 7.200.000</span>
+                  <span>63% Terkumpul</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent Activity -->
+          <section class="content-section">
+            <div class="section-header">
+              <h3 class="section-title">Aktivitas Terbaru</h3>
+            </div>
+
+            <div class="activity-feed">
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Investasi Baru</div>
+                  <div class="activity-desc">Padi Organik Karawang - Rp 5.000.000</div>
+                  <div class="activity-time">
+                    <i class="far fa-clock"></i> 2 jam lalu
+                  </div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Pembelian Alat</div>
+                  <div class="activity-desc">Traktor Mini 4WD - Rp 45.000.000</div>
+                  <div class="activity-time">
+                    <i class="far fa-clock"></i> 1 hari lalu
+                  </div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Return Investasi</div>
+                  <div class="activity-desc">Pembagian hasil investasi periode Q1</div>
+                  <div class="activity-time">
+                    <i class="far fa-clock"></i> 3 hari lalu
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.getElementById('navMenu');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove('active');
+        }
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      const navMenu = document.getElementById('navMenu');
+      if (window.innerWidth > 768) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Handle form submission
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Show success message
+      showMessage('Profil berhasil diperbarui!', 'success');
+      
+      // Update sidebar name
+      const nameInput = document.getElementById('nama').value;
+      document.getElementById('sidebarName').textContent = nameInput;
+      document.getElementById('userName').textContent = nameInput;
+    });
+
+    function resetForm() {
+      document.getElementById('profileForm').reset();
+      showMessage('Form berhasil direset!', 'error');
+    }
+
+    // Foto Profil Functions
+    let selectedFile = null;
+    let cropper = null;
+
+    function openUploadModal() {
+      document.getElementById('uploadModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeUploadModal() {
+      document.getElementById('uploadModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      resetUploadModal();
+    }
+
+    function resetUploadModal() {
+      document.getElementById('previewContainer').style.display = 'none';
+      document.getElementById('imagePreview').src = '';
+      document.getElementById('cropContainer').style.display = 'none';
+      document.getElementById('uploadButton').style.display = 'none';
+      document.getElementById('uploadArea').style.display = 'block';
+      selectedFile = null;
+      
+      if (cropper) {
+        cropper.destroy();
+        cropper = null;
+      }
+    }
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // Validasi ukuran file (max 2MB)
+      if (file.size > 2 * 1024 * 1024) {
+        showMessage('Ukuran file terlalu besar. Maksimal 2MB', 'error');
+        return;
+      }
+
+      // Validasi tipe file
+      if (!file.type.match('image.*')) {
+        showMessage('File harus berupa gambar (JPG, PNG, GIF)', 'error');
+        return;
+      }
+
+      selectedFile = file;
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        document.getElementById('uploadArea').style.display = 'none';
+        document.getElementById('previewContainer').style.display = 'block';
+        document.getElementById('imagePreview').src = e.target.result;
+        document.getElementById('imagePreview').style.display = 'block';
+        document.getElementById('uploadButton').style.display = 'flex';
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function removePreview() {
+      resetUploadModal();
+      document.getElementById('fileInput').value = '';
+    }
+
+    function uploadPhoto() {
+      if (!selectedFile) {
+        showMessage('Silakan pilih foto terlebih dahulu', 'error');
+        return;
+      }
+
+      // Simulasi upload
+      showMessage('Foto profil berhasil diupload!', 'success');
+      
+      // Update foto profil di halaman
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const profileAvatar = document.getElementById('profileAvatar');
+        const navAvatar = document.getElementById('navAvatar');
+        
+        // Update sidebar avatar
+        profileAvatar.style.backgroundImage = `url('${e.target.result}')`;
+        profileAvatar.innerHTML = '';
+        profileAvatar.classList.add('has-photo');
+        
+        // Update navbar avatar
+        navAvatar.style.backgroundImage = `url('${e.target.result}')`;
+        navAvatar.innerHTML = '';
+        
+        // Simpan di localStorage untuk persistensi
+        localStorage.setItem('userProfilePhoto', e.target.result);
+        localStorage.setItem('hasProfilePhoto', 'true');
+      };
+      reader.readAsDataURL(selectedFile);
+      
+      // Reset dan tutup modal
+      setTimeout(() => {
+        closeUploadModal();
+      }, 1500);
+    }
+
+    // Drag and drop functionality
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('drag-over');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('drag-over');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('drag-over');
+      
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        handleFileSelect({ target: { files: e.dataTransfer.files } });
+      }
+    });
+
+    // Load saved profile photo from localStorage
+    function loadProfilePhoto() {
+      const savedPhoto = localStorage.getItem('userProfilePhoto');
+      const hasPhoto = localStorage.getItem('hasProfilePhoto');
+      
+      if (hasPhoto === 'true' && savedPhoto) {
+        const profileAvatar = document.getElementById('profileAvatar');
+        const navAvatar = document.getElementById('navAvatar');
+        
+        profileAvatar.style.backgroundImage = `url('${savedPhoto}')`;
+        profileAvatar.innerHTML = '';
+        profileAvatar.classList.add('has-photo');
+        
+        navAvatar.style.backgroundImage = `url('${savedPhoto}')`;
+        navAvatar.innerHTML = '';
+      }
+    }
+
+    // Inisialisasi saat halaman dimuat
+    window.onload = function() {
+      loadProfilePhoto();
+      
+      // Inisialisasi nav menu untuk mobile
+      if (window.innerWidth <= 768) {
+        document.getElementById('navMenu').style.display = 'none';
+      }
+    };
+
+    function showMessage(text, type) {
+      const messageContainer = document.getElementById('messageContainer');
+      const message = document.createElement('div');
+      message.className = `message ${type}`;
+      message.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${text}</span>
+      `;
+      
+      messageContainer.appendChild(message);
+      
+      setTimeout(() => {
+        message.remove();
+      }, 5000);
+    }
+
+    // Close modal dengan ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeUploadModal();
+      }
+    });
+  </script>
+</body>
+</html>

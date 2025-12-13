@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investasi Pertanian - Niseva Agro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/investasi.css">
+  <style>
+  </style>
+</head>
+<body>
+      <!-- Header dengan Navbar baru dari halaman home -->
+     <div class="hero-section">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="home.php">Dashboard</a></li>
+                <li><a href="investasi.html"class="active">Investasi</a></li>
+                <li><a href="marketplace.html">Belanja</a></li>
+                <li><a href="article.html">Artikel</a></li>
+            </ul>
+
+             <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Berkontribusi untuk Masa Depan Pertanian Indonesia</h1>
+      <p>Dukung petani muda Indonesia dan dapatkan return menarik dengan berinvestasi di proyek pertanian terpilih.</p>
+    </div>
+  </div>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Cari proyek, komoditas, atau lokasi...">
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Kategori</div>
+          <select class="filter-select" id="categoryFilter">
+            <option value="">Semua Kategori</option>
+            <option value="Padi">Padi</option>
+            <option value="Kopi">Kopi</option>
+            <option value="Sayuran">Sayuran</option>
+            <option value="Buah-buahan">Buah-buahan</option>
+            <option value="Peternakan">Peternakan</option>
+            <option value="Perikanan">Perikanan</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Status</div>
+          <select class="filter-select" id="statusFilter">
+            <option value="">Semua Status</option>
+            <option value="Sedang Berjalan">Sedang Berjalan</option>
+            <option value="Selesai">Selesai</option>
+          </select>
+        </div>
+        <button class="btn-search" id="searchButton">
+          <i class="fas fa-search"></i> Cari
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="container">
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number">42</div>
+        <div class="stat-label">Proyek Aktif</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Rp 2,5 M</div>
+        <div class="stat-label">Dana Tersalurkan</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">14,5%</div>
+        <div class="stat-label">Rata-rata Bunga</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Proyek Tersedia</h2>
+        <div class="results-count" id="resultsCount">Menampilkan 8 proyek</div>
+      </div>
+      <div class="status-tabs">
+        <button class="status-tab active" data-status="">Semua</button>
+        <button class="status-tab" data-status="Sedang Berjalan">Sedang Berjalan</button>
+        <button class="status-tab" data-status="Selesai">Selesai</button>
+      </div>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Project cards will be populated by JavaScript -->
+    </div>
+  </section>
+
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <div class="containerft">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <div class="logo-icon" style="width: 40px; height: 40px; margin-right: 10px;">NSV</div>
+          <span style="font-size: 1.3rem; font-weight: bold;">Niseva Agro</span>
+        </div>
+        <p class="footer-description">
+          Memimpin revolusi pertanian Indonesia melalui inovasi teknologi dan komitmen terhadap keberlanjutan.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" target="_blank" class="social-link" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank" class="social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="social-link" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" class="social-link" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Layanan</h4>
+        <ul class="footer-links">
+          <li><a href="#marketplace"><i class="fas fa-chevron-right"></i> Marketplace</a></li>
+          <li><a href="#investasi"><i class="fas fa-chevron-right"></i> Investasi Pertanian</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel </a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Perusahaan</h4>
+        <ul class="footer-links">
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Karir</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Kontak</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Jl. Sigura-gura, Malang</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+62 21 1234 5678</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contac@nisevaagro.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">
+        © 2024 Niseva Agro. All Rights Reserved. | Developed with <i class="fas fa-heart"></i> Naila Sefina Nikita
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- Project Detail Modal -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalProjectTitle">Budidaya Padi Organik di Karawang</h2>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Modal content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Investment Form Modal -->
+  <div class="modal" id="investmentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Formulir Investasi</h2>
+        <button class="modal-close" id="investmentModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="investmentBody">
+        <!-- Investment form will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Pembayaran Investasi</h2>
+        <button class="modal-close" id="paymentModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="paymentBody">
+        <!-- Payment content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Verification Modal -->
+  <div class="modal" id="verificationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Status Pembayaran</h2>
+        <button class="modal-close" id="verificationModalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="verification-status">
+          <div class="status-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="status-message">Menunggu Verifikasi Pembayaran</div>
+          <p>Pembayaran Anda sedang diverifikasi oleh tim kami. Proses verifikasi biasanya memakan waktu 1-2 jam.</p>
+          <p>Anda akan menerima notifikasi via email setelah pembayaran terverifikasi.</p>
+          <button class="btn btn-primary" id="closeVerificationModal" style="margin-top: 2rem;">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle Function
+    function toggleMobileMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navMenu = document.getElementById('navMenu');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        if (window.innerWidth <= 768) {
+          navMenu.classList.remove('active');
+        }
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      const navMenu = document.getElementById('navMenu');
+      if (window.innerWidth > 768) {
+        navMenu.style.display = 'flex';
+        navMenu.classList.remove('active');
+      } else {
+        navMenu.style.display = 'none';
+      }
+    });
+
+    // Initialize on page load
+    window.addEventListener('load', function() {
+      if (window.innerWidth > 768) {
+        document.getElementById('navMenu').style.display = 'flex';
+      }
+    });
+  </script>
+  <script src="../assets/js/investasi.js"></script>
+</body>
+</html>

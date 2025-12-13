@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belanja Peralatan - NISEVA AGRO</title>
+    <style>
+        :root {
+            --primary: #2f5a28;
+            --primary-light: #4a7c45;
+            --primary-dark: #1e3d1a;
+            --secondary: #4CAF50;
+            --accent: #FFD700;
+            --text: #424242;
+            --text-light: #718096;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.18);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+        }
+
+        /* Navbar Container */
+        .navbar-wrapper {
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Logo Section */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation Links */
+        .nav-center {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-center li {
+            position: relative;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-center a:hover,
+        .nav-center a.active {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* Right Section */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .user-profile a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .user-profile a:hover {
+            opacity: 0.8;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .user-profile:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .user-profile span {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), 
+                        url('https://www.freepik.com/free-photo/asian-farmer-woman-working-with-laptop-organic-vegetable-hydroponic-farm-hydroponic-salad-garden-owner-checking-quality-vegetable-greenhouse-plantation_22817992.htm#fromView=image_search_similar&page=1&position=4&uuid=820b6148-26b3-456a-b359-e5a3266a4f5d&query=pertanian');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--light);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius);
+            background: var(--light);
+            font-size: 0.95rem;
+            color: var(--text);
+            min-width: 150px;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Products Section */
+        .products-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .product-stock {
+            background: var(--light);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .seller-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .seller-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .seller-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .seller-details p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .stats-card {
+            background: var(--gradient);
+            color: white;
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+        }
+
+        .stats-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .stats-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .sell-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .sell-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .sell-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .sell-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modal Preview Produk */
+        .preview-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .preview-modal.active {
+            display: flex;
+        }
+
+        .preview-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .preview-header h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .preview-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .preview-details h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .preview-info {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .info-value {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .preview-description {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-top: 1.5rem;
+        }
+
+        .preview-description h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--text);
+            border: 1px solid #e0e0e0;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid #e0e0e0;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: var(--light);
+            color: var(--primary-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: var(--light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.1);
+            background-color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 1rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        /* My Products Section */
+        .my-products-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .my-products-section.active {
+            display: block;
+        }
+
+        .my-products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .my-products-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .my-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .my-product-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .my-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .my-product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .my-product-content {
+            padding: 1.5rem;
+        }
+
+        .my-product-category {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .my-product-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .my-product-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .my-product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .my-product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .my-product-stock {
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .my-product-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .edit-btn {
+            background: var(--light);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .edit-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .delete-btn:hover {
+            background: #f5c6cb;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .no-products i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .user-profile .logo-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+/* Footer */
+
+
+.containerft {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: var(--white);
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.footer-description {
+    margin-bottom: 30px;
+    opacity: 0.8;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-section h4 {
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--gradient);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.contact-item i {
+    color: var(--primary);
+    margin-top: 3px;
+    font-size: 1.1rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    text-align: center;
+}
+
+.copyright {
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+.copyright i {
+    color: #e53935;
+}
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-center {
+                gap: 1.5rem;
+            }
+            
+            .nav-center a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 200px;
+            }
+
+            .preview-body {
+                grid-template-columns: 1fr;
+            }
+
+            .my-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-wrapper {
+                padding: 0.8rem 1rem;
+            }
+            
+            .navbar {
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .nav-center {
+                display: none;
+                position: static;
+                transform: none;
+                flex-direction: column;
+                background: var(--white);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                padding: 1rem;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+                border-radius: 16px;
+                margin: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                padding: 2rem;
+                margin: 1rem;
+                max-height: 80vh;
+            }
+
+            .preview-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .preview-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .preview-image {
+                height: 200px;
+            }
+
+            .preview-actions {
+                flex-direction: column;
+            }
+
+            .preview-actions button {
+                width: 100%;
+            }
+
+            .tab-navigation {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                text-align: left;
+                border-radius: var(--radius);
+            }
+
+            .tab-btn.active::after {
+                display: none;
+            }
+
+            .tab-btn.active {
+                background: var(--light);
+                color: var(--primary);
+            }
+
+            .my-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+        grid-template-columns: 1fr;
+    }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .preview-content {
+                padding: 1rem;
+            }
+
+            .my-product-actions {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="home.php" class="logo">
+                <div class="logo-icon">
+                    <img src="folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="home.php">Dashboard</a></li>
+                <li><a href="investasi.html">Investasi</a></li>
+                <li><a href="marketplace.html" class="active">Belanja</a></li>
+                <li><a href="article.html">Artikel</a></li>
+            </ul>
+
+            <!-- Right Section -->
+            <div class="nav-right">
+                <div class="user-profile">
+                    <a href="profile.html">
+                        <span>Guest User</span>
+                        <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+                            GU
+                        </div>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Belanja Peralatan Pertanian</h1>
+            <p>Temukan berbagai produk pertanian berkualitas dengan harga terjangkau. Langsung terhubung dengan penjual via WhatsApp!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="products-section">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab('allProducts')">Semua Produk</button>
+                <button class="tab-btn" onclick="switchTab('myProducts')">Produk Saya</button>
+            </div>
+
+            <!-- Filter Section (hanya tampil di tab semua produk) -->
+            <div class="filter-section" id="filterSection">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari produk pertanian..." id="searchInput">
+                </div>
+                <div class="filter-options">
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">Semua Kategori</option>
+                        <option value="1">Bibit Tanaman</option>
+                        <option value="2">Pupuk Organik</option>
+                        <option value="3">Alat Pertanian</option>
+                        <option value="4">Hasil Panen</option>
+                        <option value="5">Obat Tanaman</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Semua Produk Section -->
+            <div id="allProducts" class="products-grid-section">
+                <!-- Products Grid -->
+                <div id="productsGrid">
+                    <!-- Produk akan dimuat di sini -->
+                </div>
+            </div>
+
+            <!-- Produk Saya Section -->
+            <div id="myProducts" class="my-products-section">
+                <div class="my-products-header">
+                    <h2><i class="fas fa-boxes" style="margin-right: 10px;"></i> Produk yang Dipasang</h2>
+                    <div>
+                        <span style="color: var(--text-light); margin-right: 1rem;">Total: <strong id="totalMyProducts">0</strong> produk</span>
+                        <button class="btn btn-primary" onclick="openSellModal()">
+                            <i class="fas fa-plus-circle"></i> Pasang Iklan Baru
+                        </button>
+                    </div>
+                </div>
+
+                <div id="myProductsGrid" class="my-products-grid">
+                    <!-- Produk saya akan dimuat di sini -->
+                </div>
+
+                <div id="noProductsMessage" class="no-products" style="display: none;">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Belum Ada Produk</h3>
+                    <p>Anda belum memasang iklan produk. Klik tombol "Pasang Iklan Baru" untuk mulai menjual produk Anda.</p>
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="stats-card">
+                <h2>Platform Terpercaya untuk Petani Indonesia</h2>
+                <p>
+                    Menghubungkan petani dengan produk pertanian berkualitas untuk meningkatkan produktivitas dan efisiensi.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Produk Tersedia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1K+</div>
+                        <div class="stat-label">Petani Bergabung</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Penghematan Biaya</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Kepuasan Pengguna</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAMPILKAN "JUAL PRODUK ANDA" HANYA DI SEMUA PRODUK -->
+            <div id="sellCard" class="sell-card">
+                <div class="sell-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <h3>Jual Produk Anda</h3>
+                <p>Pasang iklan produk pertanian Anda dan jangkau ribuan petani potensial di seluruh Indonesia.</p>
+                <button class="btn btn-primary" onclick="openSellModal()" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                    Pasang Iklan
+                </button>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Modal Jual Barang -->
+    <div id="sellModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeSellModal()">&times;</button>
+            <h2 style="margin-bottom: 1.5rem; color: var(--text); text-align: center;">Jual Produk Pertanian</h2>
+            
+            <div id="errorMessage" style="display: none; background: #f8d7da; color: #721c24; padding: 1rem; border-radius: var(--radius); margin-bottom: 1rem; text-align: center;">
+                <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> Harap isi semua field yang wajib diisi!
+            </div>
+            
+            <form id="sellForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="product_name">Nama Produk *</label>
+                    <input type="text" id="product_name" name="product_name" placeholder="Contoh: Bibit Padi Unggul" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category_id">Kategori *</label>
+                    <select id="category_id" name="category_id" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="1">Bibit Tanaman</option>
+                        <option value="2">Pupuk Organik</option>
+                        <option value="3">Alat Pertanian</option>
+                        <option value="4">Hasil Panen</option>
+                        <option value="5">Obat Tanaman</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Harga (Rp) *</label>
+                    <input type="number" id="price" name="price" placeholder="Contoh: 50000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stock_quantity">Stok *</label>
+                    <input type="number" id="stock_quantity" name="stock_quantity" placeholder="Contoh: 100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Deskripsi *</label>
+                    <textarea id="description" name="description" placeholder="Jelaskan produk Anda secara detail..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image_path">URL Gambar</label>
+                    <input type="url" id="image_path" name="image_path" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact_phone">Nomor WhatsApp *</label>
+                    <input type="tel" id="contact_phone" name="contact_phone" placeholder="Contoh: 628123456789" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-plus-circle" style="margin-right: 8px;"></i> Pasang Iklan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Preview Produk -->
+    <div id="previewModal" class="preview-modal">
+        <div class="preview-content">
+            <div class="preview-header">
+                <h2><i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 10px;"></i> Iklan Berhasil Dipasang!</h2>
+                <p>Berikut adalah preview iklan produk Anda yang akan dilihat oleh calon pembeli</p>
+            </div>
+            
+            <div class="preview-body">
+                <div>
+                    <img id="previewProductImage" src="" alt="Preview Produk" class="preview-image">
+                    <div class="preview-info">
+                        <div class="info-row">
+                            <span class="info-label">Nama Produk:</span>
+                            <span class="info-value" id="previewProductName"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Kategori:</span>
+                            <span class="info-value" id="previewCategory"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Harga:</span>
+                            <span class="info-value" id="previewPrice"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Stok Tersedia:</span>
+                            <span class="info-value" id="previewStock"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">WhatsApp Penjual:</span>
+                            <span class="info-value" id="previewContact"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="preview-details">
+                        <h3>Detail Produk</h3>
+                        <div class="preview-description">
+                            <h4>Deskripsi Produk:</h4>
+                            <p id="previewDescription"></p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Aksi Selanjutnya</h4>
+                        <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                            Iklan Anda sekarang aktif dan dapat dilihat oleh calon pembeli. 
+                            Siapkan produk Anda dan tunggu pesanan datang!
+                        </p>
+                        <button class="btn btn-outline" onclick="viewMyProducts()">
+                            <i class="fas fa-eye" style="margin-right: 8px;"></i> Lihat Semua Produk Saya
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-actions">
+                <button class="btn btn-primary" onclick="copyIklanLink()">
+                    <i class="fas fa-link" style="margin-right: 8px;"></i> Salin Link Iklan
+                </button>
+                <button class="btn-secondary" onclick="closePreviewModal()">
+                    <i class="fas fa-times" style="margin-right: 8px;"></i> Tutup
+                </button>
+                <button class="whatsapp-btn" id="shareWhatsAppBtn" style="margin-top: 0;">
+                    <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Bagikan via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Produk -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeEditModal()">&times;</button>
+            <h2 style="margin-bottom: 1.5rem; color: var(--text); text-align: center;">Edit Produk</h2>
+            
+            <div id="editErrorMessage" style="display: none; background: #f8d7da; color: #721c24; padding: 1rem; border-radius: var(--radius); margin-bottom: 1rem; text-align: center;">
+                <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i> Harap isi semua field yang wajib diisi!
+            </div>
+            
+            <form id="editForm" onsubmit="handleEditSubmit(event)">
+                <input type="hidden" id="edit_product_id">
+                <div class="form-group">
+                    <label for="edit_product_name">Nama Produk *</label>
+                    <input type="text" id="edit_product_name" name="edit_product_name" placeholder="Contoh: Bibit Padi Unggul" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_category_id">Kategori *</label>
+                    <select id="edit_category_id" name="edit_category_id" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="1">Bibit Tanaman</option>
+                        <option value="2">Pupuk Organik</option>
+                        <option value="3">Alat Pertanian</option>
+                        <option value="4">Hasil Panen</option>
+                        <option value="5">Obat Tanaman</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_price">Harga (Rp) *</label>
+                    <input type="number" id="edit_price" name="edit_price" placeholder="Contoh: 50000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_stock_quantity">Stok *</label>
+                    <input type="number" id="edit_stock_quantity" name="edit_stock_quantity" placeholder="Contoh: 100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_description">Deskripsi *</label>
+                    <textarea id="edit_description" name="edit_description" placeholder="Jelaskan produk Anda secara detail..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_image_path">URL Gambar</label>
+                    <input type="url" id="edit_image_path" name="edit_image_path" placeholder="https://example.com/image.jpg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit_contact_phone">Nomor WhatsApp *</label>
+                    <input type="tel" id="edit_contact_phone" name="edit_contact_phone" placeholder="Contoh: 628123456789" required>
+                </div>
+                
+                <div class="form-actions" style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        <i class="fas fa-save" style="margin-right: 8px;"></i> Simpan Perubahan
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="closeEditModal()" style="flex: 1;">
+                        <i class="fas fa-times" style="margin-right: 8px;"></i> Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <div class="containerft">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <div class="logo-icon" style="width: 40px; height: 40px; margin-right: 10px;">NSV</div>
+          <span style="font-size: 1.3rem; font-weight: bold;">Niseva Agro</span>
+        </div>
+        <p class="footer-description">
+          Memimpin revolusi pertanian Indonesia melalui inovasi teknologi dan komitmen terhadap keberlanjutan.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" target="_blank" class="social-link" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank" class="social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="social-link" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" class="social-link" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Layanan</h4>
+        <ul class="footer-links">
+          <li><a href="#marketplace"><i class="fas fa-chevron-right"></i> Marketplace</a></li>
+          <li><a href="#investasi"><i class="fas fa-chevron-right"></i> Investasi Pertanian</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel </a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Perusahaan</h4>
+        <ul class="footer-links">
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Karir</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Kontak</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Jl. Sigura-gura, Malang</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+62 21 1234 5678</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contac@nisevaagro.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">
+        © 2024 Niseva Agro. All Rights Reserved. | Developed with <i class="fas fa-heart"></i> Naila Sefina Nikita
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script>
+        // Data produk (digantikan dengan database di versi PHP)
+        let products = [
+            {
+                product_id: 1,
+                product_name: 'Bibit Padi Unggul',
+                description: 'Bibit padi unggul dengan hasil panen maksimal, tahan hama dan penyakit',
+                price: 50000,
+                stock_quantity: 100,
+                image_path: 'https://tse2.mm.bing.net/th/id/OIP.QgC2fruskE2Lx-2z8UQs-AHaHa?pid=Api&P=0&h=180',
+                category_name: 'Bibit Tanaman',
+                seller_name: 'Budi Santoso',
+                contact_phone: '628123456789',
+                is_my_product: false
+            },
+            {
+                product_id: 2,
+                product_name: 'Pupuk Organik Cair',
+                description: 'Pupuk organik cair untuk meningkatkan kesuburan tanah dan pertumbuhan tanaman',
+                price: 75000,
+                stock_quantity: 50,
+                image_path: 'https://lzd-img-global.slatic.net/g/p/ae7d2d75882018e60832e0c1a3e3b61b.jpg_720x720q80.jpg_.webp',
+                category_name: 'Pupuk Organik',
+                seller_name: 'Sari Dewi',
+                contact_phone: '628987654321',
+                is_my_product: false
+            },
+            {
+                product_id: 3,
+                product_name: 'Traktor Mini',
+                description: 'Traktor mini untuk lahan pertanian kecil dan menengah, mudah dioperasikan',
+                price: 12500000,
+                stock_quantity: 5,
+                image_path: 'https://image.ceneostatic.pl/data/products/109749301/i-mini-traktor-traktorek-kubota-5001-nowy-20000netto.jpg',
+                category_name: 'Alat Pertanian',
+                seller_name: 'Budi Santoso',
+                contact_phone: '628123456789',
+                is_my_product: false
+            }
+        ];
+
+        // Data produk saya (disimpan di localStorage)
+        let myProducts = JSON.parse(localStorage.getItem('myProducts')) || [];
+
+        // Variabel untuk menyimpan data produk yang baru ditambahkan
+        let newProductData = null;
+        let editingProductId = null;
+
+        // Fungsi untuk switch tab
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide sections
+            if (tabName === 'allProducts') {
+                document.getElementById('allProducts').style.display = 'block';
+                document.getElementById('myProducts').classList.remove('active');
+                document.getElementById('filterSection').style.display = 'flex';
+                // Tampilkan "Jual Produk Anda" di sidebar
+                document.getElementById('sellCard').style.display = 'block';
+                filterProducts();
+            } else {
+                document.getElementById('allProducts').style.display = 'none';
+                document.getElementById('myProducts').classList.add('active');
+                document.getElementById('filterSection').style.display = 'none';
+                // Sembunyikan "Jual Produk Anda" di sidebar
+                document.getElementById('sellCard').style.display = 'none';
+                loadMyProducts();
+            }
+        }
+
+        // Fungsi untuk memuat produk saya
+        function loadMyProducts() {
+            const myProductsGrid = document.getElementById('myProductsGrid');
+            const noProductsMessage = document.getElementById('noProductsMessage');
+            const totalMyProducts = document.getElementById('totalMyProducts');
+            
+            // Update total produk
+            totalMyProducts.textContent = myProducts.length;
+            
+            if (myProducts.length === 0) {
+                myProductsGrid.innerHTML = '';
+                noProductsMessage.style.display = 'block';
+                return;
+            }
+            
+            noProductsMessage.style.display = 'none';
+            
+            // Tampilkan produk saya
+            myProductsGrid.innerHTML = myProducts.map(product => `
+                <div class="my-product-card">
+                    <img src="${product.image_path}" alt="${product.product_name}" class="my-product-image">
+                    <div class="my-product-content">
+                        <div class="my-product-category">${product.category_name}</div>
+                        <h3 class="my-product-title">${product.product_name}</h3>
+                        <p class="my-product-description">${product.description}</p>
+                        <div class="my-product-meta">
+                            <div class="my-product-price">Rp ${product.price.toLocaleString('id-ID')}</div>
+                            <div class="my-product-stock">
+                                Stok: ${product.stock_quantity}
+                            </div>
+                        </div>
+                        <div class="my-product-actions">
+                            <button class="action-btn edit-btn" onclick="editProduct(${product.product_id})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="action-btn delete-btn" onclick="deleteProduct(${product.product_id})">
+                                <i class="fas fa-trash"></i> Hapus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Fungsi untuk view produk saya dari preview modal
+        function viewMyProducts() {
+            switchTab('myProducts');
+            closePreviewModal();
+        }
+
+        // Fungsi untuk menghubungi penjual via WhatsApp
+        function contactSeller(phone, productName) {
+            const message = `Halo, saya tertarik dengan produk "${productName}" yang dijual di NISEVA AGRO. Bisakah saya mendapatkan informasi lebih lanjut?`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Fungsi untuk filter produk
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const productsGrid = document.getElementById('productsGrid');
+            
+            // Dapatkan kategori yang dipilih
+            const categoryNames = {
+                '1': 'Bibit Tanaman',
+                '2': 'Pupuk Organik',
+                '3': 'Alat Pertanian',
+                '4': 'Hasil Panen',
+                '5': 'Obat Tanaman'
+            };
+            
+            // Gabungkan semua produk (produk default + produk saya)
+            const allProducts = [...products, ...myProducts];
+            
+            // Filter produk
+            const filteredProducts = allProducts.filter(product => {
+                const matchesSearch = !searchTerm || 
+                    product.product_name.toLowerCase().includes(searchTerm) || 
+                    product.description.toLowerCase().includes(searchTerm);
+                
+                const matchesCategory = !categoryFilter || 
+                    product.category_name === categoryNames[categoryFilter];
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Update tampilan
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--text-light); background: var(--white); border-radius: var(--radius);">
+                        <h3>Tidak ada produk ditemukan</h3>
+                        <p>Coba ubah filter pencarian Anda</p>
+                    </div>
+                `;
+            } else {
+                productsGrid.innerHTML = filteredProducts.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image_path}" alt="${product.product_name}" class="product-image">
+                        <div class="product-content">
+                            <div>
+                                <div class="product-category">${product.category_name}</div>
+                                <h2 class="product-title">${product.product_name}</h2>
+                                <p class="product-description">${product.description}</p>
+                                <div class="product-meta">
+                                    <div class="product-price">Rp ${product.price.toLocaleString('id-ID')}</div>
+                                    <div class="product-stock">
+                                        Stok: ${product.stock_quantity}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="seller-info">
+                                    <div class="seller-avatar">${product.seller_name.charAt(0)}</div>
+                                    <div class="seller-details">
+                                        <h4>${product.seller_name}</h4>
+                                        <p>${product.contact_phone}</p>
+                                    </div>
+                                </div>
+                                <button class="whatsapp-btn" onclick="contactSeller('${product.contact_phone}', '${product.product_name}')">
+                                    <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Fungsi untuk menangani submit form
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Validasi sederhana
+            let isValid = true;
+            const requiredFields = ['product_name', 'category_id', 'price', 'stock_quantity', 'description', 'contact_phone'];
+            
+            requiredFields.forEach(field => {
+                if (!formData.get(field)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+            
+            // Ambil data dari form
+            const productData = {
+                product_name: formData.get('product_name'),
+                category_id: formData.get('category_id'),
+                price: parseInt(formData.get('price')),
+                stock_quantity: parseInt(formData.get('stock_quantity')),
+                description: formData.get('description'),
+                image_path: formData.get('image_path') || 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+                contact_phone: formData.get('contact_phone'),
+                seller_name: 'Guest User' // Default seller name
+            };
+            
+            // Generate ID baru untuk produk saya
+            const newProductId = myProducts.length > 0 ? Math.max(...myProducts.map(p => p.product_id)) + 1 : 1000;
+            
+            // Dapatkan nama kategori
+            const categoryNames = {
+                '1': 'Bibit Tanaman',
+                '2': 'Pupuk Organik',
+                '3': 'Alat Pertanian',
+                '4': 'Hasil Panen',
+                '5': 'Obat Tanaman'
+            };
+            
+            // Buat objek produk lengkap
+            const newProduct = {
+                product_id: newProductId,
+                product_name: productData.product_name,
+                description: productData.description,
+                price: productData.price,
+                stock_quantity: productData.stock_quantity,
+                image_path: productData.image_path,
+                category_name: categoryNames[productData.category_id] || 'Lainnya',
+                seller_name: productData.seller_name,
+                contact_phone: productData.contact_phone,
+                created_at: new Date().toISOString(),
+                is_my_product: true
+            };
+            
+            // Tambahkan ke myProducts
+            myProducts.unshift(newProduct);
+            
+            // Simpan ke localStorage
+            localStorage.setItem('myProducts', JSON.stringify(myProducts));
+            
+            // Simpan data produk baru untuk preview
+            newProductData = newProduct;
+            
+            // Tutup modal form
+            closeSellModal();
+            
+            // Tampilkan preview modal setelah 500ms
+            setTimeout(() => {
+                showProductPreview(newProduct);
+            }, 500);
+        }
+
+        // Fungsi untuk menampilkan preview produk
+        function showProductPreview(productData) {
+            // Set nilai preview
+            document.getElementById('previewProductName').textContent = productData.product_name;
+            document.getElementById('previewCategory').textContent = productData.category_name;
+            document.getElementById('previewPrice').textContent = `Rp ${productData.price.toLocaleString('id-ID')}`;
+            document.getElementById('previewStock').textContent = `${productData.stock_quantity} unit`;
+            document.getElementById('previewContact').textContent = productData.contact_phone;
+            document.getElementById('previewDescription').textContent = productData.description;
+            document.getElementById('previewProductImage').src = productData.image_path;
+            
+            // Update WhatsApp share button
+            const shareBtn = document.getElementById('shareWhatsAppBtn');
+            shareBtn.onclick = function() {
+                shareProductViaWhatsApp(productData);
+            };
+            
+            // Tampilkan modal preview
+            document.getElementById('previewModal').classList.add('active');
+        }
+
+        // Fungsi untuk berbagi produk via WhatsApp
+        function shareProductViaWhatsApp(productData) {
+            const message = `🔥 *IKLAN PRODUK BARU DI NISEVA AGRO* 🔥
+
+📦 *${productData.product_name}*
+🏷️ *Kategori:* ${productData.category_name}
+💰 *Harga:* Rp ${productData.price.toLocaleString('id-ID')}
+📊 *Stok:* ${productData.stock_quantity} unit
+📞 *Hubungi:* ${productData.contact_phone}
+
+📝 *Deskripsi:*
+${productData.description}
+
+🎯 *Jual produk pertanian Anda juga di NISEVA AGRO Marketplace!*
+👉 [Klik di sini untuk melihat produk]`;
+            
+            const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Fungsi untuk menyalin link iklan
+        function copyIklanLink() {
+            const link = `${window.location.origin}/produk/${newProductData.product_name.toLowerCase().replace(/\s+/g, '-')}`;
+            
+            // Buat temporary input untuk copy
+            const tempInput = document.createElement('input');
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // Untuk mobile
+            
+            try {
+                document.execCommand('copy');
+                alert('Link iklan berhasil disalin ke clipboard!');
+            } catch (err) {
+                console.error('Gagal menyalin: ', err);
+            }
+            
+            document.body.removeChild(tempInput);
+        }
+
+        // Fungsi untuk menutup modal preview
+        function closePreviewModal() {
+            document.getElementById('previewModal').classList.remove('active');
+            
+            // Refresh tampilan produk
+            filterProducts();
+            loadMyProducts();
+            newProductData = null;
+        }
+
+        // Fungsi untuk edit produk
+        function editProduct(productId) {
+            const product = myProducts.find(p => p.product_id === productId);
+            if (!product) return;
+            
+            editingProductId = productId;
+            
+            // Isi form edit dengan data produk
+            document.getElementById('edit_product_id').value = product.product_id;
+            document.getElementById('edit_product_name').value = product.product_name;
+            document.getElementById('edit_description').value = product.description;
+            document.getElementById('edit_price').value = product.price;
+            document.getElementById('edit_stock_quantity').value = product.stock_quantity;
+            document.getElementById('edit_image_path').value = product.image_path;
+            document.getElementById('edit_contact_phone').value = product.contact_phone;
+            
+            // Set kategori (konversi dari nama ke id)
+            const categoryIds = {
+                'Bibit Tanaman': '1',
+                'Pupuk Organik': '2',
+                'Alat Pertanian': '3',
+                'Hasil Panen': '4',
+                'Obat Tanaman': '5'
+            };
+            document.getElementById('edit_category_id').value = categoryIds[product.category_name] || '';
+            
+            // Tampilkan modal edit
+            document.getElementById('editModal').classList.add('active');
+        }
+
+        // Fungsi untuk menangani submit form edit
+        function handleEditSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Validasi sederhana
+            let isValid = true;
+            const requiredFields = ['edit_product_name', 'edit_category_id', 'edit_price', 'edit_stock_quantity', 'edit_description', 'edit_contact_phone'];
+            
+            requiredFields.forEach(field => {
+                if (!formData.get(field)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                document.getElementById('editErrorMessage').style.display = 'block';
+                return;
+            }
+            
+            // Dapatkan nama kategori
+            const categoryNames = {
+                '1': 'Bibit Tanaman',
+                '2': 'Pupuk Organik',
+                '3': 'Alat Pertanian',
+                '4': 'Hasil Panen',
+                '5': 'Obat Tanaman'
+            };
+            
+            // Update produk di myProducts
+            const productIndex = myProducts.findIndex(p => p.product_id === editingProductId);
+            if (productIndex !== -1) {
+                myProducts[productIndex] = {
+                    ...myProducts[productIndex],
+                    product_name: formData.get('edit_product_name'),
+                    category_name: categoryNames[formData.get('edit_category_id')] || 'Lainnya',
+                    price: parseInt(formData.get('edit_price')),
+                    stock_quantity: parseInt(formData.get('edit_stock_quantity')),
+                    description: formData.get('edit_description'),
+                    image_path: formData.get('edit_image_path') || 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+                    contact_phone: formData.get('edit_contact_phone')
+                };
+                
+                // Simpan ke localStorage
+                localStorage.setItem('myProducts', JSON.stringify(myProducts));
+                
+                // Refresh tampilan
+                loadMyProducts();
+                filterProducts();
+                
+                // Tutup modal
+                closeEditModal();
+                
+                // Tampilkan notifikasi
+                alert('Produk berhasil diperbarui!');
+            }
+        }
+
+        // Fungsi untuk delete produk
+        function deleteProduct(productId) {
+            if (confirm('Apakah Anda yakin ingin menghapus produk ini?')) {
+                // Hapus dari myProducts
+                myProducts = myProducts.filter(p => p.product_id !== productId);
+                
+                // Simpan ke localStorage
+                localStorage.setItem('myProducts', JSON.stringify(myProducts));
+                
+                // Refresh tampilan
+                loadMyProducts();
+                filterProducts();
+                
+                // Tampilkan notifikasi
+                alert('Produk berhasil dihapus!');
+            }
+        }
+
+        // Fungsi untuk menutup modal edit
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+            document.getElementById('editForm').reset();
+            document.getElementById('editErrorMessage').style.display = 'none';
+            editingProductId = null;
+        }
+
+        // Modal functions
+        function openSellModal() {
+            document.getElementById('sellModal').classList.add('active');
+            // Reset pesan ketika modal dibuka
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function closeSellModal() {
+            document.getElementById('sellModal').classList.remove('active');
+            document.getElementById('sellForm').reset();
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const navMenu = document.getElementById('navMenu');
+            if (window.innerWidth > 768) {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('sellModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSellModal();
+            }
+        });
+
+        document.getElementById('previewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePreviewModal();
+            }
+        });
+
+        document.getElementById('editModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEditModal();
+            }
+        });
+
+        // Event listeners untuk filter
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            // Debounce search untuk performa
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(filterProducts, 500);
+        });
+
+        document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+
+        // Inisialisasi saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            filterProducts();
+            loadMyProducts();
+        });
+    </script>
+</body>
+</html>

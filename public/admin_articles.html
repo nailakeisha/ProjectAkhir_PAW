@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Artikel - Niseva Agro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Path dari public/ ke assets/css/ -->
+    <link rel="stylesheet" href="../assets/css/admin_articles.css">
+</head>
+<body>
+        <!-- Header dengan Navbar baru dari halaman home -->
+     <div class="hero-section">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="admin-investasi.html">Investasi</a></li>
+                <li><a href="admin-marketplace.html">Belanja</a></li>
+                <li><a href="admin_articles.html" class="active">Artikel</a></li>
+            </ul>
+
+             <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Manajemen Artikel</h1>
+                    <p class="page-subtitle">Kelola semua artikel platform NISEVA Agro</p>
+                </div>
+                <a href="admin_add_article.php" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Tambah Artikel
+                </a>
+            </div>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalArticles">0</div>
+                    <div class="stat-label">Total Artikel</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="publishedArticles">0</div>
+                    <div class="stat-label">Published</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="draftArticles">0</div>
+                    <div class="stat-label">Draft</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="archivedArticles">0</div>
+                    <div class="stat-label">Archived</div>
+                </div>
+            </section>
+
+            <!-- Tabs Navigation -->
+            <section class="tabs-section">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="all-articles">Semua Artikel</button>
+                    <button class="tab-btn" data-tab="my-articles">Artikel Saya</button>
+                </div>
+            </section>
+
+            <!-- All Articles Tab -->
+            <section class="tab-content active" id="all-articles-tab">
+                <div class="section-header">
+                    <h2 class="section-title">Semua Artikel</h2>
+                    <div class="results-count" id="articlesCount">Menampilkan 0 artikel</div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-group">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Cari artikel...">
+                    </div>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">Semua Kategori</option>
+                        <option value="teknologi">Teknologi</option>
+                        <option value="tips">Tips & Trik</option>
+                        <option value="berita">Berita</option>
+                        <option value="edukasi">Edukasi</option>
+                    </select>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">Semua Status</option>
+                        <option value="published">Published</option>
+                        <option value="draft">Draft</option>
+                        <option value="archived">Archived</option>
+                    </select>
+                </div>
+
+                <!-- Articles Table -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ARTIKEL</th>
+                                <th>KATEGORI</th>
+                                <th>STATUS</th>
+                                <th>TANGGAL</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesTable">
+                            <!-- Data diisi oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- My Articles Tab -->
+            <section class="tab-content" id="my-articles-tab">
+                <div class="section-header">
+                    <h2 class="section-title">Artikel Saya</h2>
+                    <div class="results-count" id="myArticlesCount">Menampilkan 0 artikel</div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="mySearchInput" placeholder="Cari artikel saya...">
+                    </div>
+                    <select class="filter-select" id="myStatusFilter">
+                        <option value="">Semua Status</option>
+                        <option value="published">Published</option>
+                        <option value="draft">Draft</option>
+                        <option value="archived">Archived</option>
+                    </select>
+                </div>
+
+                <div id="myArticlesGrid" class="articles-grid">
+                    <!-- Grid diisi oleh JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Delete Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"><i class="fas fa-trash"></i> Konfirmasi Hapus</h2>
+                <button class="modal-close" id="deleteModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message" id="deleteMessage">Apakah Anda yakin ingin menghapus artikel ini?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="cancelDelete">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                    <button class="btn btn-danger" id="confirmDelete">
+                        <i class="fas fa-trash"></i> Hapus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Modal -->
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"><i class="fas fa-exchange-alt"></i> Ubah Status</h2>
+                <button class="modal-close" id="statusModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message" id="statusMessage">Ubah status artikel ini?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="cancelStatus">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                    <button class="btn btn-primary" id="confirmStatus">
+                        <i class="fas fa-check"></i> Ya, Ubah
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Path dari public/ ke assets/js/ -->
+    <script src="../assets/js/admin_articles.js"></script>
+</body>
+</html>

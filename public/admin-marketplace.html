@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Belanja Peralatan - Niseva Agro</title>
+  <link rel="stylesheet" href="../assets/css/admin-marketplace.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS untuk Navbar */
+    .navbar-wrapper {
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: transparent;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        padding: 0.8rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* Logo */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        flex-shrink: 0;
+        text-decoration: none;
+    }
+
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+    }
+
+    .logo-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Navigation */
+    .nav-center {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-center li {
+        position: relative;
+    }
+
+    .nav-center a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 16px;
+        border-radius: 20px;
+    }
+
+    .nav-center a:hover,
+    .nav-center a.active {
+        color: #1e3d1a;
+        background: rgba(76, 175, 80, 0.1);
+    }
+
+    /* Right side */
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 6px 12px;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+    }
+
+    .user-profile:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .user-profile a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .user-profile span {
+        font-weight: 600;
+        color: #333;
+        font-size: 0.9rem;
+    }
+
+    /* Mobile button */
+    .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        padding: 8px;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      margin-top: 120px;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Stats Section - Tanpa latar abu-abu */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e3d1a;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* Tabs Section */
+    .tabs-section {
+      margin-bottom: 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      background: white;
+      padding: 0.75rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .tab-btn:hover {
+      background: rgba(76, 175, 80, 0.1);
+      color: #1e3d1a;
+    }
+
+    .tab-btn.active {
+      background: #1e3d1a;
+      color: white;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0;
+    }
+
+    .results-count {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .filter-select {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      font-size: 0.9rem;
+      color: #333;
+      min-width: 150px;
+    }
+
+    /* Table Styles */
+    .table-container {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    .data-table thead {
+      background: #f8f9fa;
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    .data-table th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: #495057;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #e9ecef;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .data-table tbody tr:hover {
+      background: rgba(76, 175, 80, 0.03);
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Product Image */
+    .product-image-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid #e9ecef;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-active {
+      background: rgba(76, 175, 80, 0.1);
+      color: #1e3d1a;
+    }
+
+    .status-pending {
+      background: rgba(255, 152, 0, 0.1);
+      color: #f57c00;
+    }
+
+    .status-inactive {
+      background: rgba(244, 67, 54, 0.1);
+      color: #d32f2f;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn-view {
+      color: #2196F3;
+    }
+
+    .btn-view:hover {
+      background: rgba(33, 150, 243, 0.1);
+    }
+
+    .btn-verify {
+      color: #1e3d1a;
+    }
+
+    .btn-verify:hover {
+      background: rgba(76, 175, 80, 0.1);
+    }
+
+    .btn-edit {
+      color: #FF9800;
+    }
+
+    .btn-edit:hover {
+      background: rgba(255, 152, 0, 0.1);
+    }
+
+    .btn-delete {
+      color: #f44336;
+    }
+
+    .btn-delete:hover {
+      background: rgba(244, 67, 54, 0.1);
+    }
+
+    /* Projects Grid for Categories */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-category {
+      font-size: 0.8rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 1rem 0;
+    }
+
+    .project-description {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .project-stock {
+      font-weight: 600;
+      color: #1e3d1a;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1e3d1a 0%, #1e3d1a 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #1e3d1a;
+      border: 2px solid #1e3d1a;
+    }
+
+    .btn-outline:hover {
+      background: #1e3d1a;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #f44336;
+      color: white;
+      box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    }
+
+    .btn-danger:hover {
+      background: #d32f2f;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(244, 67, 54, 0.4);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideUp 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      transition: color 0.3s;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .modal-close:hover {
+      color: #f44336;
+      background: rgba(244, 67, 54, 0.1);
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #1e3d1a;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+
+    /* User Profile */
+    .user-profile .logo-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3d1a 0%, #1e3d1a 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-wrapper {
+          padding: 0.8rem 1rem;
+      }
+
+      .navbar {
+          padding: 0.6rem 1.5rem;
+          border-radius: 40px;
+      }
+
+      .nav-center {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: white;
+          flex-direction: column;
+          padding: 1.5rem;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+          border-radius: 16px;
+          margin: 10px;
+          z-index: 1000;
+      }
+
+      .nav-center.active {
+          display: flex;
+      }
+
+      .nav-center li {
+          width: 100%;
+          text-align: center;
+      }
+
+      .nav-center a {
+          justify-content: center;
+          padding: 12px 20px;
+          border-radius: 8px;
+      }
+
+      .mobile-menu-btn {
+          display: block;
+      }
+
+      .stats-section {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        margin-top: 100px;
+        padding: 1rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filter-group {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .filter-select {
+        flex: 1;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin: 1rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav-center {
+        gap: 1.5rem;
+      }
+
+      .nav-center a {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-center {
+          display: none;
+          position: static;
+          transform: none;
+          flex-direction: column;
+          background: white;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          padding: 1rem;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+          border-radius: 16px;
+          margin: 1rem;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .logo {
+        position: static;
+      }
+
+      .nav-right {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+        </div>
+        <span>NISEVA AGRO - ADMIN</span>
+      </a>
+
+      <!-- Center Navigation -->
+      <ul class="nav-center" id="navMenu">
+        <li><a href="investasi.html">Investasi</a></li>
+        <li><a href="admin-marketplace.html" class="active">Belanja</a></li>
+        <li><a href="admin_articles.html">Artikel</a></li>
+      </ul>
+
+      <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Stats Section - Langsung di bawah navbar -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-number" id="totalProducts">0</div>
+          <div class="stat-label">Total Produk</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalSellers">0</div>
+          <div class="stat-label">Total Penjual</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="pendingVerifications">0</div>
+          <div class="stat-label">Verifikasi Pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="monthlyRevenue">0</div>
+          <div class="stat-label">Revenue Bulan Ini</div>
+        </div>
+      </section>
+
+      <!-- Tabs Navigation -->
+      <section class="tabs-section">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="verification">Verifikasi Produk</button>
+          <button class="tab-btn" data-tab="products">Semua Produk</button>
+          <button class="tab-btn" data-tab="sellers">Kelola Penjual</button>
+          <button class="tab-btn" data-tab="categories">Kelola Kategori</button>
+        </div>
+      </section>
+
+      <!-- Verification Tab Content -->
+      <section class="tab-content active" id="verification-tab">
+        <div class="section-header">
+          <h2 class="section-title">Produk Menunggu Verifikasi</h2>
+          <div class="results-count" id="verificationCount">Menampilkan 0 produk</div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Gambar</th>
+                <th>Nama Produk</th>
+                <th>Penjual</th>
+                <th>Kategori</th>
+                <th>Harga</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="verificationTable">
+              <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Products Tab Content -->
+      <section class="tab-content" id="products-tab">
+        <div class="section-header">
+          <h2 class="section-title">Semua Produk Marketplace</h2>
+          <div class="filter-group">
+            <select class="filter-select" id="productFilter">
+              <option value="">Semua Status</option>
+              <option value="active">Aktif</option>
+              <option value="pending">Pending</option>
+              <option value="inactive">Nonaktif</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Gambar</th>
+                <th>Nama Produk</th>
+                <th>Penjual</th>
+                <th>Kategori</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="productsTable">
+              <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Sellers Tab Content -->
+      <section class="tab-content" id="sellers-tab">
+        <div class="section-header">
+          <h2 class="section-title">Kelola Penjual</h2>
+          <div class="filter-group">
+            <select class="filter-select" id="sellerFilter">
+              <option value="">Semua Status</option>
+              <option value="verified">Terverifikasi</option>
+              <option value="pending">Pending</option>
+              <option value="suspended">Ditangguhkan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Telepon</th>
+                <th>Produk</th>
+                <th>Bergabung</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="sellersTable">
+              <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Categories Tab Content -->
+      <section class="tab-content" id="categories-tab">
+        <div class="section-header">
+          <h2 class="section-title">Kelola Kategori Produk</h2>
+        </div>
+
+        <div class="projects-grid" id="categoriesGrid">
+          <!-- Kategori akan diisi oleh JavaScript -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Verifikasi Produk -->
+  <div class="modal" id="verificationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Verifikasi Produk</h2>
+        <button class="modal-close" id="verificationModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="verificationModalBody">
+        <!-- Konten akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah/Edit Produk -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="productModalTitle">Tambah Produk Baru</h2>
+        <button class="modal-close" id="productModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="productModalBody">
+        <!-- Form akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah/Edit Penjual -->
+  <div class="modal" id="sellerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="sellerModalTitle">Tambah Penjual Baru</h2>
+        <button class="modal-close" id="sellerModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="sellerModalBody">
+        <!-- Form akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah/Edit Kategori -->
+  <div class="modal" id="categoryModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="categoryModalTitle">Tambah Kategori Baru</h2>
+        <button class="modal-close" id="categoryModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="categoryModalBody">
+        <!-- Form akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Konfirmasi -->
+  <div class="modal" id="confirmModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="confirmModalTitle">Konfirmasi</h2>
+        <button class="modal-close" id="confirmModalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage">Apakah Anda yakin ingin melanjutkan?</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" id="cancelConfirm">Batal</button>
+          <button class="btn btn-primary" id="submitConfirm">Ya, Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Hapus -->
+  <div class="modal" id="deleteModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Konfirmasi Hapus</h2>
+        <button class="modal-close" id="deleteModalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteMessage">Apakah Anda yakin ingin menghapus item ini? Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" id="cancelDelete">Batal</button>
+          <button class="btn btn-danger" id="confirmDelete">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data sample untuk admin marketplace
+    const adminMarketplaceData = {
+      stats: {
+        totalProducts: 245,
+        totalSellers: 89,
+        pendingVerifications: 12,
+        monthlyRevenue: 158000000
+      },
+      
+      pendingProducts: [
+        {
+          id: 1,
+          name: "Benih Jagung Manis",
+          seller: "Agus Setiawan",
+          category: "Bibit Tanaman",
+          price: 35000,
+          date: "2024-01-20",
+          description: "Benih jagung manis hibrida dengan rasa manis alami"
+        },
+        {
+          id: 2,
+          name: "Pestisida Organik",
+          seller: "CV Tani Sehat",
+          category: "Obat Tanaman",
+          price: 45000,
+          date: "2024-01-19",
+          description: "Pestisida organik ramah lingkungan untuk tanaman"
+        }
+      ],
+      
+      allProducts: [
+        {
+          id: 1,
+          name: "Bibit Padi Unggul",
+          seller: "Budi Santoso",
+          category: "Bibit Tanaman",
+          price: 50000,
+          stock: 100,
+          status: "active",
+          image: "https://tse2.mm.bing.net/th/id/OIP.QgC2fruskE2Lx-2z8UQs-AHaHa?pid=Api&P=0&h=180"
+        },
+        {
+          id: 2,
+          name: "Pupuk Organik Cair",
+          seller: "Sari Dewi",
+          category: "Pupuk Organik",
+          price: 75000,
+          stock: 50,
+          status: "active",
+          image: "https://lzd-img-global.slatic.net/g/p/ae7d2d75882018e60832e0c1a3e3b61b.jpg_720x720q80.jpg_.webp"
+        },
+        {
+          id: 3,
+          name: "Traktor Mini",
+          seller: "Budi Santoso",
+          category: "Alat Pertanian",
+          price: 12500000,
+          stock: 5,
+          status: "active",
+          image: "https://image.ceneostatic.pl/data/products/109749301/i-mini-traktor-traktorek-kubota-5001-nowy-20000netto.jpg"
+        },
+        {
+          id: 4,
+          name: "Benih Jagung Manis",
+          seller: "Agus Setiawan",
+          category: "Bibit Tanaman",
+          price: 35000,
+          stock: 200,
+          status: "pending",
+        }
+      ],
+      
+      sellers: [
+        {
+          id: 1,
+          name: "Budi Santoso",
+          email: "budi@email.com",
+          phone: "628123456789",
+          productCount: 15,
+          joinDate: "2024-01-15",
+          status: "verified"
+        },
+        {
+          id: 2,
+          name: "Sari Dewi",
+          email: "sari@email.com",
+          phone: "628987654321",
+          productCount: 8,
+          joinDate: "2024-01-10",
+          status: "verified"
+        },
+        {
+          id: 3,
+          name: "Agus Setiawan",
+          email: "agus@email.com",
+          phone: "628555123456",
+          productCount: 3,
+          joinDate: "2024-01-20",
+          status: "pending"
+        }
+      ],
+      
+      categories: [
+        {
+          id: 1,
+          name: "Bibit Tanaman",
+          icon: "🌱",
+          productCount: 45,
+          description: "Berbagai jenis bibit tanaman pertanian"
+        },
+        {
+          id: 2,
+          name: "Pupuk Organik",
+          icon: "🧪",
+          productCount: 32,
+          description: "Pupuk organik untuk kesuburan tanah"
+        },
+        {
+          id: 3,
+          name: "Alat Pertanian",
+          icon: "🔧",
+          productCount: 28,
+          description: "Alat-alat modern untuk pertanian"
+        },
+        {
+          id: 4,
+          name: "Hasil Panen",
+          icon: "🌾",
+          productCount: 67,
+          description: "Hasil panen berkualitas dari petani"
+        }
+      ]
+    };
+
+    // State variables
+    let currentTab = 'verification';
+    let currentProductId = null;
+    let currentSellerId = null;
+    let currentCategoryId = null;
+    let currentAction = null;
+
+    // Format currency
+    function formatCurrency(amount) {
+      return 'Rp ' + new Intl.NumberFormat('id-ID').format(amount);
+    }
+
+    function formatNumber(amount) {
+      return new Intl.NumberFormat('id-ID').format(amount);
+    }
+
+    // Format date
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('id-ID', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+      });
+    }
+
+    // Get status badge class
+    function getStatusClass(status) {
+      switch(status) {
+        case 'active':
+        case 'verified': return 'status-active';
+        case 'pending': return 'status-pending';
+        case 'inactive':
+        case 'suspended': return 'status-inactive';
+        default: return 'status-pending';
+      }
+    }
+
+    // Get status text
+    function getStatusText(status) {
+      switch(status) {
+        case 'active': return 'Aktif';
+        case 'verified': return 'Terverifikasi';
+        case 'pending': return 'Pending';
+        case 'inactive': return 'Nonaktif';
+        case 'suspended': return 'Ditangguhkan';
+        default: return 'Pending';
+      }
+    }
+
+    // Update stats
+    function updateStats() {
+      const stats = adminMarketplaceData.stats;
+      
+      document.getElementById('totalProducts').textContent = formatNumber(stats.totalProducts);
+      document.getElementById('totalSellers').textContent = formatNumber(stats.totalSellers);
+      document.getElementById('pendingVerifications').textContent = formatNumber(stats.pendingVerifications);
+      document.getElementById('monthlyRevenue').textContent = formatCurrency(stats.monthlyRevenue);
+    }
+
+    // Render verification table
+    function renderVerificationTable() {
+      const tableBody = document.getElementById('verificationTable');
+      const countElement = document.getElementById('verificationCount');
+      
+      const products = adminMarketplaceData.pendingProducts;
+      
+      tableBody.innerHTML = '';
+      
+      if (products.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align: center; padding: 2rem; color: #666;">
+              Tidak ada produk yang menunggu verifikasi
+            </td>
+          </tr>
+        `;
+        countElement.textContent = 'Menampilkan 0 produk';
+        return;
+      }
+      
+      products.forEach((product, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>
+            <img src="${product.image}" alt="${product.name}" 
+                 class="product-image-small"
+                 onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?w=100&h=100&fit=crop'">
+          </td>
+          <td style="font-weight: 500;">${product.name}</td>
+          <td>${product.seller}</td>
+          <td>${product.category}</td>
+          <td>${formatCurrency(product.price)}</td>
+          <td>${formatDate(product.date)}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-icon btn-view" onclick="viewVerification(${product.id})" title="Lihat">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="btn-icon btn-verify" onclick="verifyProduct(${product.id})" title="Verifikasi">
+                <i class="fas fa-check"></i>
+              </button>
+              <button class="btn-icon btn-delete" onclick="rejectProduct(${product.id})" title="Tolak">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+      
+      countElement.textContent = `Menampilkan ${products.length} produk`;
+    }
+
+    // Render products table
+    function renderProductsTable() {
+      const tableBody = document.getElementById('productsTable');
+      const filter = document.getElementById('productFilter').value;
+      
+      let products = adminMarketplaceData.allProducts;
+      
+      if (filter) {
+        products = products.filter(p => p.status === filter);
+      }
+      
+      tableBody.innerHTML = '';
+      
+      if (products.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="9" style="text-align: center; padding: 2rem; color: #666;">
+              Tidak ada produk yang ditemukan
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      products.forEach((product, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>
+            <img src="${product.image}" alt="${product.name}" 
+                 class="product-image-small"
+                 onerror="this.src='https://images.unsplash.com/photo-1560493676-04071c5f467b?w=100&h=100&fit=crop'">
+          </td>
+          <td style="font-weight: 500;">${product.name}</td>
+          <td>${product.seller}</td>
+          <td>${product.category}</td>
+          <td>${formatCurrency(product.price)}</td>
+          <td>${product.stock}</td>
+          <td><span class="status-badge ${getStatusClass(product.status)}">${getStatusText(product.status)}</span></td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-icon btn-edit" onclick="editProduct(${product.id})" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-icon btn-delete" onclick="deleteProduct(${product.id})" title="Hapus">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Render sellers table
+    function renderSellersTable() {
+      const tableBody = document.getElementById('sellersTable');
+      const filter = document.getElementById('sellerFilter').value;
+      
+      let sellers = adminMarketplaceData.sellers;
+      
+      if (filter) {
+        sellers = sellers.filter(s => s.status === filter);
+      }
+      
+      tableBody.innerHTML = '';
+      
+      if (sellers.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align: center; padding: 2rem; color: #666;">
+              Tidak ada penjual yang ditemukan
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      sellers.forEach((seller, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td style="font-weight: 500;">${seller.name}</td>
+          <td>${seller.email}</td>
+          <td>${seller.phone}</td>
+          <td>${seller.productCount} produk</td>
+          <td>${formatDate(seller.joinDate)}</td>
+          <td><span class="status-badge ${getStatusClass(seller.status)}">${getStatusText(seller.status)}</span></td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-icon btn-edit" onclick="editSeller(${seller.id})" title="Edit">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-icon btn-delete" onclick="deleteSeller(${seller.id})" title="Hapus">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Render categories grid
+    function renderCategoriesGrid() {
+      const grid = document.getElementById('categoriesGrid');
+      const categories = adminMarketplaceData.categories;
+      
+      grid.innerHTML = '';
+      
+      categories.forEach(category => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+          <div class="project-content">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <div style="font-size: 2rem;">${category.icon}</div>
+              <div>
+                <div class="project-category">KATEGORI</div>
+                <h3 class="project-title">${category.name}</h3>
+              </div>
+            </div>
+            <p class="project-description">${category.description}</p>
+            <div class="project-meta">
+              <div class="project-stock">${category.productCount} Produk</div>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-outline" onclick="editCategory(${category.id})">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="btn btn-danger" onclick="deleteCategory(${category.id})">
+                <i class="fas fa-trash"></i> Hapus
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Switch tabs
+    function switchTab(tabId) {
+      // Update active tab button
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update active tab content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+        if (content.id === `${tabId}-tab`) {
+          content.classList.add('active');
+        }
+      });
+      
+      currentTab = tabId;
+    }
+
+    // View verification details
+    function viewVerification(productId) {
+      const product = adminMarketplaceData.pendingProducts.find(p => p.id === productId);
+      if (!product) return;
+      
+      document.getElementById('verificationModalBody').innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+          <div>
+            <img src="${product.image}" alt="${product.name}" 
+                 style="width: 100%; border-radius: 8px;">
+          </div>
+          <div>
+            <h3 style="margin-bottom: 0.5rem; color: #4CAF50;">${product.name}</h3>
+            <p style="color: #666; margin-bottom: 1rem;">${product.description}</p>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Penjual:</span>
+                <strong>${product.seller}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Kategori:</span>
+                <strong>${product.category}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span>Harga:</span>
+                <strong>${formatCurrency(product.price)}</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Tanggal Upload:</span>
+                <strong>${formatDate(product.date)}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="closeModal('verificationModal')">Tutup</button>
+          <button class="btn btn-danger" onclick="rejectProduct(${product.id})">
+            <i class="fas fa-times"></i> Tolak
+          </button>
+          <button class="btn btn-primary" onclick="verifyProduct(${product.id})">
+            <i class="fas fa-check"></i> Verifikasi
+          </button>
+        </div>
+      `;
+      
+      document.getElementById('verificationModal').classList.add('active');
+    }
+
+    // Verify product
+    function verifyProduct(productId) {
+      currentProductId = productId;
+      currentAction = 'verify';
+      
+      document.getElementById('confirmMessage').textContent = 'Apakah Anda yakin ingin memverifikasi produk ini?';
+      document.getElementById('confirmModalTitle').textContent = 'Verifikasi Produk';
+      document.getElementById('confirmModal').classList.add('active');
+    }
+
+    // Reject product
+    function rejectProduct(productId) {
+      currentProductId = productId;
+      currentAction = 'reject';
+      
+      document.getElementById('confirmMessage').textContent = 'Apakah Anda yakin ingin menolak produk ini?';
+      document.getElementById('confirmModalTitle').textContent = 'Tolak Produk';
+      document.getElementById('confirmModal').classList.add('active');
+    }
+
+    // Edit product
+    function editProduct(productId) {
+      const product = adminMarketplaceData.allProducts.find(p => p.id === productId);
+      if (!product) return;
+      
+      currentProductId = productId;
+      
+      document.getElementById('productModalTitle').textContent = 'Edit Produk';
+      document.getElementById('productModalBody').innerHTML = `
+        <form id="productForm" onsubmit="saveProduct(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productName">Nama Produk *</label>
+              <input type="text" id="productName" name="productName" value="${product.name}" required>
+            </div>
+            <div class="form-group">
+              <label for="productCategory">Kategori *</label>
+              <select id="productCategory" name="productCategory" required>
+                <option value="Bibit Tanaman" ${product.category === 'Bibit Tanaman' ? 'selected' : ''}>Bibit Tanaman</option>
+                <option value="Pupuk Organik" ${product.category === 'Pupuk Organik' ? 'selected' : ''}>Pupuk Organik</option>
+                <option value="Alat Pertanian" ${product.category === 'Alat Pertanian' ? 'selected' : ''}>Alat Pertanian</option>
+                <option value="Hasil Panen" ${product.category === 'Hasil Panen' ? 'selected' : ''}>Hasil Panen</option>
+                <option value="Obat Tanaman" ${product.category === 'Obat Tanaman' ? 'selected' : ''}>Obat Tanaman</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productPrice">Harga (Rp) *</label>
+              <input type="number" id="productPrice" name="productPrice" value="${product.price}" required>
+            </div>
+            <div class="form-group">
+              <label for="productStock">Stok *</label>
+              <input type="number" id="productStock" name="productStock" value="${product.stock}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productSeller">Penjual *</label>
+              <select id="productSeller" name="productSeller" required>
+                <option value="Budi Santoso" ${product.seller === 'Budi Santoso' ? 'selected' : ''}>Budi Santoso</option>
+                <option value="Sari Dewi" ${product.seller === 'Sari Dewi' ? 'selected' : ''}>Sari Dewi</option>
+                <option value="Agus Setiawan" ${product.seller === 'Agus Setiawan' ? 'selected' : ''}>Agus Setiawan</option>
+                <option value="CV Tani Sehat" ${product.seller === 'CV Tani Sehat' ? 'selected' : ''}>CV Tani Sehat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productStatus">Status *</label>
+              <select id="productStatus" name="productStatus" required>
+                <option value="active" ${product.status === 'active' ? 'selected' : ''}>Aktif</option>
+                <option value="pending" ${product.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="inactive" ${product.status === 'inactive' ? 'selected' : ''}>Nonaktif</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productImage">URL Gambar</label>
+            <input type="url" id="productImage" name="productImage" value="${product.image}">
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('productModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('productModal').classList.add('active');
+    }
+
+    // Add new product
+    function addNewProduct() {
+      currentProductId = null;
+      
+      document.getElementById('productModalTitle').textContent = 'Tambah Produk Baru';
+      document.getElementById('productModalBody').innerHTML = `
+        <form id="productForm" onsubmit="saveProduct(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productName">Nama Produk *</label>
+              <input type="text" id="productName" name="productName" required>
+            </div>
+            <div class="form-group">
+              <label for="productCategory">Kategori *</label>
+              <select id="productCategory" name="productCategory" required>
+                <option value="">Pilih Kategori</option>
+                <option value="Bibit Tanaman">Bibit Tanaman</option>
+                <option value="Pupuk Organik">Pupuk Organik</option>
+                <option value="Alat Pertanian">Alat Pertanian</option>
+                <option value="Hasil Panen">Hasil Panen</option>
+                <option value="Obat Tanaman">Obat Tanaman</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productPrice">Harga (Rp) *</label>
+              <input type="number" id="productPrice" name="productPrice" required>
+            </div>
+            <div class="form-group">
+              <label for="productStock">Stok *</label>
+              <input type="number" id="productStock" name="productStock" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productSeller">Penjual *</label>
+              <select id="productSeller" name="productSeller" required>
+                <option value="">Pilih Penjual</option>
+                <option value="Budi Santoso">Budi Santoso</option>
+                <option value="Sari Dewi">Sari Dewi</option>
+                <option value="Agus Setiawan">Agus Setiawan</option>
+                <option value="CV Tani Sehat">CV Tani Sehat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productStatus">Status *</label>
+              <select id="productStatus" name="productStatus" required>
+                <option value="active">Aktif</option>
+                <option value="pending">Pending</option>
+                <option value="inactive">Nonaktif</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productImage">URL Gambar</label>
+            <input type="url" id="productImage" name="productImage" placeholder="https://example.com/image.jpg">
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('productModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Tambah Produk</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('productModal').classList.add('active');
+    }
+
+    // Save product
+    function saveProduct(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      
+      // In a real app, you would send this data to a server
+      alert('Produk berhasil disimpan!');
+      closeModal('productModal');
+      renderProductsTable();
+    }
+
+    // Edit seller
+    function editSeller(sellerId) {
+      const seller = adminMarketplaceData.sellers.find(s => s.id === sellerId);
+      if (!seller) return;
+      
+      currentSellerId = sellerId;
+      
+      document.getElementById('sellerModalTitle').textContent = 'Edit Penjual';
+      document.getElementById('sellerModalBody').innerHTML = `
+        <form id="sellerForm" onsubmit="saveSeller(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sellerName">Nama *</label>
+              <input type="text" id="sellerName" name="sellerName" value="${seller.name}" required>
+            </div>
+            <div class="form-group">
+              <label for="sellerEmail">Email *</label>
+              <input type="email" id="sellerEmail" name="sellerEmail" value="${seller.email}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sellerPhone">Telepon *</label>
+              <input type="tel" id="sellerPhone" name="sellerPhone" value="${seller.phone}" required>
+            </div>
+            <div class="form-group">
+              <label for="sellerStatus">Status *</label>
+              <select id="sellerStatus" name="sellerStatus" required>
+                <option value="verified" ${seller.status === 'verified' ? 'selected' : ''}>Terverifikasi</option>
+                <option value="pending" ${seller.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="suspended" ${seller.status === 'suspended' ? 'selected' : ''}>Ditangguhkan</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('sellerModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('sellerModal').classList.add('active');
+    }
+
+    // Add new seller
+    function addNewSeller() {
+      currentSellerId = null;
+      
+      document.getElementById('sellerModalTitle').textContent = 'Tambah Penjual Baru';
+      document.getElementById('sellerModalBody').innerHTML = `
+        <form id="sellerForm" onsubmit="saveSeller(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sellerName">Nama *</label>
+              <input type="text" id="sellerName" name="sellerName" required>
+            </div>
+            <div class="form-group">
+              <label for="sellerEmail">Email *</label>
+              <input type="email" id="sellerEmail" name="sellerEmail" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sellerPhone">Telepon *</label>
+              <input type="tel" id="sellerPhone" name="sellerPhone" required>
+            </div>
+            <div class="form-group">
+              <label for="sellerStatus">Status *</label>
+              <select id="sellerStatus" name="sellerStatus" required>
+                <option value="pending">Pending</option>
+                <option value="verified">Terverifikasi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('sellerModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Tambah Penjual</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('sellerModal').classList.add('active');
+    }
+
+    // Save seller
+    function saveSeller(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      
+      // In a real app, you would send this data to a server
+      alert('Penjual berhasil disimpan!');
+      closeModal('sellerModal');
+      renderSellersTable();
+      updateStats();
+    }
+
+    // Edit category
+    function editCategory(categoryId) {
+      const category = adminMarketplaceData.categories.find(c => c.id === categoryId);
+      if (!category) return;
+      
+      currentCategoryId = categoryId;
+      
+      document.getElementById('categoryModalTitle').textContent = 'Edit Kategori';
+      document.getElementById('categoryModalBody').innerHTML = `
+        <form id="categoryForm" onsubmit="saveCategory(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="categoryName">Nama Kategori *</label>
+              <input type="text" id="categoryName" name="categoryName" value="${category.name}" required>
+            </div>
+            <div class="form-group">
+              <label for="categoryIcon">Icon</label>
+              <input type="text" id="categoryIcon" name="categoryIcon" value="${category.icon}">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="categoryDescription">Deskripsi *</label>
+            <textarea id="categoryDescription" name="categoryDescription" required>${category.description}</textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('categoryModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('categoryModal').classList.add('active');
+    }
+
+    // Add new category
+    function addNewCategory() {
+      currentCategoryId = null;
+      
+      document.getElementById('categoryModalTitle').textContent = 'Tambah Kategori Baru';
+      document.getElementById('categoryModalBody').innerHTML = `
+        <form id="categoryForm" onsubmit="saveCategory(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="categoryName">Nama Kategori *</label>
+              <input type="text" id="categoryName" name="categoryName" required>
+            </div>
+            <div class="form-group">
+              <label for="categoryIcon">Icon</label>
+              <input type="text" id="categoryIcon" name="categoryIcon" placeholder="🌱">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="categoryDescription">Deskripsi *</label>
+            <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-outline" onclick="closeModal('categoryModal')">Batal</button>
+            <button type="submit" class="btn btn-primary">Tambah Kategori</button>
+          </div>
+        </form>
+      `;
+      
+      document.getElementById('categoryModal').classList.add('active');
+    }
+
+    // Save category
+    function saveCategory(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      
+      // In a real app, you would send this data to a server
+      alert('Kategori berhasil disimpan!');
+      closeModal('categoryModal');
+      renderCategoriesGrid();
+    }
+
+    // Delete functions
+    function deleteProduct(productId) {
+      currentProductId = productId;
+      document.getElementById('deleteMessage').textContent = 'Apakah Anda yakin ingin menghapus produk ini? Tindakan ini tidak dapat dibatalkan.';
+      document.getElementById('deleteModal').classList.add('active');
+    }
+
+    function deleteSeller(sellerId) {
+      currentSellerId = sellerId;
+      document.getElementById('deleteMessage').textContent = 'Apakah Anda yakin ingin menghapus penjual ini? Semua produk yang terkait juga akan dihapus.';
+      document.getElementById('deleteModal').classList.add('active');
+    }
+
+    function deleteCategory(categoryId) {
+      currentCategoryId = categoryId;
+      document.getElementById('deleteMessage').textContent = 'Apakah Anda yakin ingin menghapus kategori ini? Semua produk dalam kategori ini akan dipindahkan ke kategori lain.';
+      document.getElementById('deleteModal').classList.add('active');
+    }
+
+    // Close modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // Mobile menu function
+    function toggleMobileMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Initialize
+    function init() {
+      // Update stats
+      updateStats();
+      
+      // Render initial tables
+      renderVerificationTable();
+      renderProductsTable();
+      renderSellersTable();
+      renderCategoriesGrid();
+      
+      // Tab click handlers
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          switchTab(btn.dataset.tab);
+        });
+      });
+      
+      // Filter change handlers
+      document.getElementById('productFilter')?.addEventListener('change', renderProductsTable);
+      document.getElementById('sellerFilter')?.addEventListener('change', renderSellersTable);
+      
+      // Button click handlers
+      document.getElementById('addProductBtn')?.addEventListener('click', addNewProduct);
+      document.getElementById('addSellerBtn')?.addEventListener('click', addNewSeller);
+      document.getElementById('addCategoryBtn')?.addEventListener('click', addNewCategory);
+      
+      // Modal close handlers
+      document.getElementById('verificationModalClose')?.addEventListener('click', () => closeModal('verificationModal'));
+      document.getElementById('productModalClose')?.addEventListener('click', () => closeModal('productModal'));
+      document.getElementById('sellerModalClose')?.addEventListener('click', () => closeModal('sellerModal'));
+      document.getElementById('categoryModalClose')?.addEventListener('click', () => closeModal('categoryModal'));
+      document.getElementById('confirmModalClose')?.addEventListener('click', () => closeModal('confirmModal'));
+      document.getElementById('deleteModalClose')?.addEventListener('click', () => closeModal('deleteModal'));
+      document.getElementById('cancelConfirm')?.addEventListener('click', () => closeModal('confirmModal'));
+      document.getElementById('cancelDelete')?.addEventListener('click', () => closeModal('deleteModal'));
+      
+      // Confirm action handler
+      document.getElementById('submitConfirm')?.addEventListener('click', () => {
+        if (currentAction === 'verify') {
+          // Move product from pending to allProducts
+          const productIndex = adminMarketplaceData.pendingProducts.findIndex(p => p.id === currentProductId);
+          if (productIndex !== -1) {
+            const product = adminMarketplaceData.pendingProducts[productIndex];
+            adminMarketplaceData.allProducts.push({
+              ...product,
+              stock: 100,
+              status: 'active'
+            });
+            adminMarketplaceData.pendingProducts.splice(productIndex, 1);
+            adminMarketplaceData.stats.pendingVerifications--;
+            adminMarketplaceData.stats.totalProducts++;
+          }
+          alert('Produk berhasil diverifikasi!');
+        } else if (currentAction === 'reject') {
+          // Remove product from pending
+          const productIndex = adminMarketplaceData.pendingProducts.findIndex(p => p.id === currentProductId);
+          if (productIndex !== -1) {
+            adminMarketplaceData.pendingProducts.splice(productIndex, 1);
+            adminMarketplaceData.stats.pendingVerifications--;
+          }
+          alert('Produk berhasil ditolak!');
+        }
+        closeModal('confirmModal');
+        renderVerificationTable();
+        updateStats();
+      });
+      
+      // Delete confirm handler
+      document.getElementById('confirmDelete')?.addEventListener('click', () => {
+        switch(currentTab) {
+          case 'products':
+            const productIndex = adminMarketplaceData.allProducts.findIndex(p => p.id === currentProductId);
+            if (productIndex !== -1) {
+              adminMarketplaceData.allProducts.splice(productIndex, 1);
+              adminMarketplaceData.stats.totalProducts--;
+              alert('Produk berhasil dihapus!');
+            }
+            break;
+          case 'sellers':
+            const sellerIndex = adminMarketplaceData.sellers.findIndex(s => s.id === currentSellerId);
+            if (sellerIndex !== -1) {
+              adminMarketplaceData.sellers.splice(sellerIndex, 1);
+              adminMarketplaceData.stats.totalSellers--;
+              alert('Penjual berhasil dihapus!');
+            }
+            break;
+          case 'categories':
+            const categoryIndex = adminMarketplaceData.categories.findIndex(c => c.id === currentCategoryId);
+            if (categoryIndex !== -1) {
+              adminMarketplaceData.categories.splice(categoryIndex, 1);
+              alert('Kategori berhasil dihapus!');
+            }
+            break;
+        }
+        
+        closeModal('deleteModal');
+        
+        // Refresh the appropriate view
+        switch(currentTab) {
+          case 'products':
+            renderProductsTable();
+            break;
+          case 'sellers':
+            renderSellersTable();
+            break;
+          case 'categories':
+            renderCategoriesGrid();
+            break;
+        }
+        
+        updateStats();
+      });
+      
+      // Close modals when clicking outside
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            modal.classList.remove('active');
+          }
+        });
+      });
+
+      // Handle window resize for mobile menu
+      window.addEventListener('resize', function() {
+        const navMenu = document.getElementById('navMenu');
+        if (window.innerWidth > 850) {
+          navMenu.style.display = 'flex';
+        } else {
+          navMenu.style.display = 'none';
+        }
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const navMenu = document.getElementById('navMenu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        
+        if (!navMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+          if (window.innerWidth <= 850) {
+            navMenu.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

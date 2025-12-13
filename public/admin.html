@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Niseva Investasi</title>
+    <link rel="stylesheet" href="../assets/css/investasi.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <h3>Admin Panel</h3>
+            <nav>
+                <a href="#" class="admin-nav active" data-tab="projects">Kelola Proyek</a>
+                <a href="#" class="admin-nav" data-tab="investments">Permintaan Investasi</a>
+                <a href="#" class="admin-nav" data-tab="withdrawals">Pencairan Dana</a>
+            </nav>
+        </aside>
+        
+        <main class="admin-main">
+            <header class="admin-header">
+                <h2>Dashboard Admin</h2>
+                <button onclick="logout()">Logout</button>
+            </header>
+
+            <div class="admin-content">
+                <!-- Projects Management -->
+                <div id="projects-tab" class="tab-content active">
+                    <h3>Kelola Proyek Investasi</h3>
+                    <div id="adminProjectsList"></div>
+                </div>
+
+                <!-- Investment Requests -->
+                <div id="investments-tab" class="tab-content">
+                    <h3>Permintaan Investasi</h3>
+                    <div id="investmentRequests"></div>
+                </div>
+
+                <!-- Withdrawal Requests -->
+                <div id="withdrawals-tab" class="tab-content">
+                    <h3>Permintaan Pencairan Dana</h3>
+                    <div id="withdrawalRequests"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/assets/js/investasi.js"></script>
+</body>
+</html>

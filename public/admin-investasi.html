@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Investasi - Niseva Agro</title>
+  <link rel="stylesheet" href="../assets/css/admin_investasi.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="navbar-wrapper">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <img src="../folderimage/logo.png" alt="Logo Niseva">
+        </div>
+        <span>NISEVA</span>
+      </a>
+
+      <!-- Center Navigation -->
+      <ul class="nav-center" id="navMenu">
+        <li><a href="investasi.html" class="active">Investasi</a></li>
+        <li><a href="admin-marketplace.html">Belanja</a></li>
+        <li><a href="admin_articles.html">Artikel</a></li>
+      </ul>
+
+      <!-- Right Section -->
+      <div class="nav-right">
+        <!-- User Profile -->
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Admin</span>
+            <div class="logo-icon">AD</div>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" aria-label="Toggle Menu" onclick="toggleMobileMenu()">
+          ☰
+        </button>
+      </div>
+    </nav>
+  </div>
+ 
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Stats Section -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <div class="stat-number" id="totalInvestments">0</div>
+          <div class="stat-label">Total Investasi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="pendingPayments">0</div>
+          <div class="stat-label">Pembayaran Pending</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="activeProjects">0</div>
+          <div class="stat-label">Proyek Aktif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="totalInvestors">0</div>
+          <div class="stat-label">Total Investor</div>
+        </div>
+      </section>
+
+      <!-- Tabs Navigation -->
+      <section class="tabs-section">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="payments">Pembayaran Menunggu</button>
+          <button class="tab-btn" data-tab="investments">Semua Investasi</button>
+          <button class="tab-btn" data-tab="projects">Kelola Proyek</button>
+        </div>
+      </section>
+
+      <!-- Payments Tab Content -->
+      <section class="tab-content active" id="payments-tab">
+        <div class="section-header">
+          <h2 class="section-title">Pembayaran Menunggu Verifikasi</h2>
+          <div class="results-count" id="paymentsCount">Menampilkan 0 pembayaran</div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Investor</th>
+                <th>Proyek</th>
+                <th>Jumlah</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="paymentsTable">
+              <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Investments Tab Content -->
+      <section class="tab-content" id="investments-tab">
+        <div class="section-header">
+          <h2 class="section-title">Semua Investasi</h2>
+          <div class="filter-group">
+            <select class="filter-select" id="investmentFilter">
+              <option value="">Semua Status</option>
+              <option value="pending">Menunggu</option>
+              <option value="verified">Terverifikasi</option>
+              <option value="rejected">Ditolak</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Investor</th>
+                <th>Proyek</th>
+                <th>Jumlah</th>
+                <th>Tanggal</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="investmentsTable">
+              <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Projects Tab Content -->
+      <section class="tab-content" id="projects-tab">
+        <div class="section-header">
+          <h2 class="section-title">Kelola Proyek Investasi</h2>
+          <button class="btn btn-primary" id="addProjectBtn">
+            <i class="fas fa-plus"></i> Tambah Proyek
+          </button>
+        </div>
+
+        <div class="projects-grid" id="adminProjectsGrid">
+          <!-- Proyek akan diisi oleh JavaScript -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Verifikasi Pembayaran -->
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Verifikasi Pembayaran</h2>
+        <button class="modal-close" id="paymentModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="paymentModalBody">
+        <!-- Konten akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Ubah Status Investasi -->
+  <div class="modal" id="statusModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Ubah Status Investasi</h2>
+        <button class="modal-close" id="statusModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="statusModalBody">
+        <!-- Form akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tambah/Edit Proyek -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="projectModalTitle">Tambah Proyek Baru</h2>
+        <button class="modal-close" id="projectModalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="projectModalBody">
+        <!-- Form akan diisi oleh JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Konfirmasi Hapus -->
+  <div class="modal" id="deleteModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Konfirmasi Hapus</h2>
+        <button class="modal-close" id="deleteModalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteMessage">Apakah Anda yakin ingin menghapus item ini?</p>
+        <div class="modal-actions">
+          <button class="btn btn-outline" id="cancelDelete">Batal</button>
+          <button class="btn btn-danger" id="confirmDelete">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/admin-investasi.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Artikel - NISEVA Admin</title>
+    <link rel="stylesheet" href="../assets/css/admin_edit_article.css">
+</head>
+<body>
+     <!-- Header dengan Navbar baru dari halaman home -->
+     <div class="hero-section">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="admin-investasi.html">Investasi</a></li>
+                <li><a href="admin-marketplace.html">Belanja</a></li>
+                <li><a href="admin_articles.html" class="active">Artikel</a></li>
+            </ul>
+
+             <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Manajemen Artikel</h1>
+            <p>Edit artikel yang dipublikasikan di platform NISEVA Agro</p>
+        </div>
+    </div>
+  </div>
+
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Main Content -->
+    <div class="admin-container">
+        <div class="admin-card">
+            <div class="admin-header-section">
+                <h1 class="admin-title">Edit Artikel</h1>
+                <p class="admin-subtitle">Perbarui konten artikel <span id="articleTitle"></span></p>
+            </div>
+
+            <div id="messageContainer" class="message" style="display: none;"></div>
+
+            <form id="editArticleForm" method="POST" action="admin_edit_article.html">
+                <div class="form-group">
+                    <label for="title" class="form-label">Judul Artikel</label>
+                    <input type="text" id="title" name="title" class="form-control" required 
+                           placeholder="Masukkan judul artikel yang menarik">
+                    <div id="title-counter" class="char-counter">0/255 karakter</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="category" class="form-label">Kategori</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="technology">Technology</option>
+                        <option value="sustainability">Sustainability</option>
+                        <option value="organic">Organic</option>
+                        <option value="innovation">Innovation</option>
+                        <option value="research">Research</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="excerpt" class="form-label">Ringkasan Artikel</label>
+                    <textarea id="excerpt" name="excerpt" class="form-control" 
+                              placeholder="Ringkasan singkat artikel"></textarea>
+                    <div id="excerpt-counter" class="char-counter">0/255 karakter</div>
+                    <small style="color: #666;">Kosongkan untuk generate otomatis dari konten</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="content" class="form-label">Konten Artikel</label>
+                    <textarea id="content" name="content" class="form-control" required 
+                              placeholder="Tulis konten artikel Anda di sini..."></textarea>
+                    <div id="content-counter" class="char-counter">0 karakter</div>
+                </div>
+
+                <div class="article-info">
+                    <div class="info-item">
+                        <strong>Dibuat:</strong> <span id="createdAt">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Diupdate:</strong> <span id="updatedAt">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Status:</strong> 
+                        <span id="statusText" class="status-badge">-</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Views:</strong> <span id="viewCount">0</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="admin_articles.html" class="btn btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Kembali
+                    </a>
+                    <button type="button" class="btn btn-warning" onclick="previewArticle()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        Preview
+                    </button>
+                    <button type="submit" class="btn btn-submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        Perbarui Artikel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Preview Artikel</h3>
+                <span class="close" onclick="closePreview()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closePreview()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/admin_edit_article.js"></script>
+</body>
+</html>

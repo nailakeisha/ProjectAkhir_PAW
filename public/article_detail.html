@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Artikel Sangat Menarik Ditampilkan di Bagian Hero - NISEVA</title>
+
+    <!-- CSS External -->
+    <link rel="stylesheet" href="../assets/css/article_detail.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Header dengan Navbar baru dari halaman home -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="home.php">Dashboard</a></li>
+                <li><a href="investasi.html">Investasi</a></li>
+                <li><a href="marketplace.html" >Belanja</a></li>
+                <li><a href="article.html"  class="active">Artikel</a></li>
+            </ul>
+
+             <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Hero Content -->
+        <div class="hero-content">
+<h1>Artikel Pertanian</h1>
+            <p>Baca Berbagai Artikel Tentang Solusi, Teknologi Pertanian</p>
+        </div>
+    </div>
+    
+    <!-- Main Article -->
+    <div class="article-container">
+        <main class="article-section">
+            <img src="assets/uploads/gambar-example.jpg" 
+                 alt="Gambar Artikel" 
+                 class="article-image">
+            
+            <div class="article-content">
+                <div class="article-category">TEKNOLOGI</div>
+                <h1 class="article-title">Judul Artikel Sangat Menarik Ditampilkan di Bagian Hero</h1>
+                <div class="article-meta">
+                    <div class="author-avatar-small">A</div>
+                    <span>Admin</span>
+                    <span>•</span>
+                    <span>10 Desember 2025</span>
+                </div>
+                <div class="article-body">
+                    <p>
+                        Ini adalah isi artikel contoh untuk tampilan HTML versi bersih tanpa PHP.
+                        Semua styling dan struktur HTML sudah dipisahkan sehingga rapi dan mudah dipelihara.
+                    </p>
+                    <p>
+                        Kamu bisa memasukkan konten artikel asli di bagian ini nanti.
+                    </p>
+                    <h2>Sub Judul Artikel</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <blockquote>
+                        Kutipan penting dari artikel ini yang menarik perhatian pembaca.
+                    </blockquote>
+                    <h3>Sub Sub Judul</h3>
+                    <p>
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <ul>
+                        <li>Poin penting pertama</li>
+                        <li>Poin penting kedua</li>
+                        <li>Poin penting ketiga</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <h2>Baca Artikel Lainnya</h2>
+        <div class="articles-grid">
+            <div class="article-card" onclick="window.location.href='article_detail.html'">
+                <img src="assets/uploads/thumb1.jpg" 
+                     alt="Contoh Artikel Lain 1" 
+                     class="article-card-image">
+                <div class="article-card-content">
+                    <div class="article-card-category">PERTANIAN</div>
+                    <h3 class="article-card-title">Contoh Artikel Lain 1</h3>
+                    <p class="article-card-excerpt">Ini adalah contoh artikel lainnya yang mungkin menarik untuk dibaca...</p>
+                    <div class="article-card-meta">
+                        <span>Admin</span>
+                        <span>•</span>
+                        <span>10 Desember 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card" onclick="window.location.href='article_detail.html'">
+                <img src="assets/uploads/thumb2.jpg" 
+                     alt="Contoh Artikel Lain 2" 
+                     class="article-card-image">
+                <div class="article-card-content">
+                    <div class="article-card-category">TEKNOLOGI</div>
+                    <h3 class="article-card-title">Contoh Artikel Lain 2</h3>
+                    <p class="article-card-excerpt">Artikel ini membahas tentang perkembangan teknologi dalam bidang pertanian modern...</p>
+                    <div class="article-card-meta">
+                        <span>Admin</span>
+                        <span>•</span>
+                        <span>9 Desember 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card" onclick="window.location.href='article_detail.html'">
+                <img src="assets/uploads/thumb3.jpg" 
+                     alt="Contoh Artikel Lain 3" 
+                     class="article-card-image">
+                <div class="article-card-content">
+                    <div class="article-card-category">INVESTASI</div>
+                    <h3 class="article-card-title">Contoh Artikel Lain 3</h3>
+                    <p class="article-card-excerpt">Peluang investasi di sektor pertanian yang menjanjikan untuk masa depan...</p>
+                    <div class="article-card-meta">
+                        <span>Admin</span>
+                        <span>•</span>
+                        <span>8 Desember 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card" onclick="window.location.href='article_detail.html'">
+                <img src="assets/uploads/thumb1.jpg" 
+                     alt="Contoh Artikel Lain 4" 
+                     class="article-card-image">
+                <div class="article-card-content">
+                    <div class="article-card-category">EDUKASI</div>
+                    <h3 class="article-card-title">Contoh Artikel Lain 4</h3>
+                    <p class="article-card-excerpt">Panduan lengkap untuk memulai pertanian organik di pekarangan rumah...</p>
+                    <div class="article-card-meta">
+                        <span>Admin</span>
+                        <span>•</span>
+                        <span>7 Desember 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <div class="containerft">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <div class="logo-icon" style="width: 40px; height: 40px; margin-right: 10px;">NSV</div>
+          <span style="font-size: 1.3rem; font-weight: bold;">Niseva Agro</span>
+        </div>
+        <p class="footer-description">
+          Memimpin revolusi pertanian Indonesia melalui inovasi teknologi dan komitmen terhadap keberlanjutan.
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/" target="_blank" class="social-link" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://twitter.com/" target="_blank" class="social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" class="social-link" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" class="social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" class="social-link" title="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Layanan</h4>
+        <ul class="footer-links">
+          <li><a href="#marketplace"><i class="fas fa-chevron-right"></i> Marketplace</a></li>
+          <li><a href="#investasi"><i class="fas fa-chevron-right"></i> Investasi Pertanian</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel </a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Perusahaan</h4>
+        <ul class="footer-links">
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+          <li><a href="#articles"><i class="fas fa-chevron-right"></i> Artikel</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Karir</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Kontak</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Jl. Sigura-gura, Malang</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+62 21 1234 5678</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contac@nisevaagro.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">
+        © 2024 Niseva Agro. All Rights Reserved. | Developed with <i class="fas fa-heart"></i> Naila Sefina Nikita
+      </p>
+    </div>
+  </div>
+</footer>
+    <script src="../assets/js/article_detail.js"></script>
+</body>
+</html>

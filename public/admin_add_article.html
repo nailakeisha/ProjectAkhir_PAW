@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Artikel - NISEVA</title>
+    <link rel="stylesheet" href="../assets/css/admin_add_article.css">
+</head>
+<body>
+        <!-- Header dengan Navbar baru dari halaman home -->
+     <div class="hero-section">
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="../folderimage/logo.png" alt="Logo Niseva" style="width: 45px; height: 45px; border-radius: 50%;">
+                </div>
+                <span>NISEVA</span>
+            </a>
+
+            <!-- Center Navigation -->
+            <ul class="nav-center" id="navMenu">
+                <li><a href="admin-investasi.html">Investasi</a></li>
+                <li><a href="admin-marketplace.html">Belanja</a></li>
+                <li><a href="admin_articles.html" class="active">Artikel</a></li>
+            </ul>
+
+             <!-- Right Section -->
+      <div class="nav-right">
+        <div class="user-profile">
+          <a href="profile.html">
+            <span>Guest User</span>
+            <div class="logo-icon" style="width: 35px; height: 35px; font-size: 0.7rem;">
+              GU
+            </div>
+          </a>
+        </div>
+        
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </nav>
+  </div>
+        <!-- Hero Content -->
+        <div class="hero-content">
+           <h1>Manajemen Artikel</h1>
+            <p>Tambahkan artikel yang akan dipublikasikan di platform NISEVA Agro</p>
+        </div>
+    </div>
+  </div>
+
+    <!-- Upload Form -->
+    <div class="article-container">
+        <section class="upload-section">
+            <h2>Buat Artikel</h2>
+
+            <div id="messageContainer" style="display: none;">
+                <!-- Pesan sukses/error akan ditampilkan di sini -->
+            </div>
+
+            <form class="upload-form" method="POST" action="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="authorName">Nama Penulis</label>
+                        <input type="text" id="authorName" name="authorName" 
+                               readonly
+                               style="background-color: #f5f5f5;">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Kategori</label>
+                        <select id="category" name="category" required>
+                            <option value="">Pilih Kategori</option>
+                            <option value="technology">Teknologi Pertanian</option>
+                            <option value="sustainability">Pertanian Berkelanjutan</option>
+                            <option value="organic">Pertanian Organik</option>
+                            <option value="innovation">Inovasi Pertanian</option>
+                            <option value="research">Penelitian</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Judul Artikel</label>
+                    <input type="text" id="title" name="title" required 
+                           placeholder="Judul artikel yang menarik">
+                </div>
+
+                <div class="form-group">
+                    <label for="excerpt">Ringkasan Artikel</label>
+                    <textarea id="excerpt" name="excerpt" required 
+                              placeholder="Tulis ringkasan singkat artikel (150-300 karakter)"
+                              maxlength="300"></textarea>
+                    <div class="char-count"><span id="excerpt-count">0</span>/300</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gambar Utama Artikel</label>
+                    <div class="file-upload" id="fileUploadArea">
+                        <input type="file" id="articleImage" name="articleImage" accept="image/*">
+                        <label for="articleImage" class="file-upload-label">
+                            <div class="upload-icon">📁</div>
+                            <div>
+                                <strong>Klik untuk mengunggah gambar</strong>
+                                <p>atau seret dan lepas file di sini</p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="file-info" id="fileInfo">Format yang didukung: JPG, PNG, GIF. Maksimal ukuran: 5MB</div>
+                    
+                    <!-- URL Gambar Alternatif -->
+                    <div style="margin-top: 1rem;">
+                        <label for="image_path">Atau masukkan URL gambar:</label>
+                        <input type="text" id="image_path" name="image_path" 
+                               placeholder="https://example.com/image.jpg">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Isi Artikel *</label>
+                    <textarea id="content" name="content" required 
+                              placeholder="Tulis artikel Anda di sini..."
+                              rows="10"></textarea>
+                    <div class="char-count"><span id="content-count">0</span> karakter</div>
+                </div>
+
+                <button type="submit" class="btn-submit">Upload Artikel</button>
+            </form>
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>Preview Artikel Anda</h3>
+                <div class="preview-article">
+                    <img id="previewImage" src="" alt="Preview Gambar" class="preview-image">
+                    <div class="preview-content">
+                        <h2 id="previewTitle" class="preview-title"></h2>
+                        <div class="preview-meta">
+                            <div class="author-avatar" id="previewAvatar">U</div>
+                            <span id="previewAuthor">Nama Pengguna</span>
+                            <span>•</span>
+                            <span id="previewDate"></span>
+                        </div>
+                        <div class="preview-body">
+                            <p id="previewContent"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../assets/js/admin_add_article.js"></script>
+</body>
+</html>
