@@ -12,6 +12,18 @@ Aplikasi web manajemen investasi dan marketplace finansial yang dibangun menggun
 - *Frontend*: HTML, CSS, JavaScript
 - *Database*: MySQL/MariaDB
 - *Arsitektur*: MVC Pattern
+
+👥 Default User Accounts
+Admin Account
+Email: ayudia@gmail.com
+Password: ayudia123
+Access: Full admin dashboard and product management
+
+Regular User Account
+Email: sefinasyauqi@gmail.com
+Password: ayudia123
+Access: User profile,Artikel,Marketplace,Investasi
+
 ```
 ProjectAkhir_PAW/
 ├── assets/                           # Asset statis aplikasi
@@ -92,7 +104,7 @@ ProjectAkhir_PAW/
 - PHP 7.4 atau lebih tinggi
 - MySQL/MariaDB
 - Web Server (Apache/Nginx) atau PHP Built-in Server
-- Composer (opsional)
+- Composer 
 
 ### Langkah-langkah Instalasi
 
@@ -107,7 +119,7 @@ ProjectAkhir_PAW/
    sql
    CREATE DATABASE projectakhir_paw;
    
-   - Import file SQL (jika ada) ke database yang telah dibuat
+   - Import file SQL
    - Buka file backend/config.php
    - Sesuaikan konfigurasi database:
    php
@@ -115,7 +127,7 @@ ProjectAkhir_PAW/
    $host = "localhost";
    $username = "root";
    $password = "";
-   $database = "projectakhir_paw";
+   $database = "niseva_agro";
    ?>
    
 
@@ -133,14 +145,15 @@ ProjectAkhir_PAW/
    php -S localhost:8000
    
    
-   Atau deploy ke web server (Apache/Nginx):
+   Atau deploy ke web server (Apache):
    - Arahkan document root ke direktori project
    - Pastikan mod_rewrite sudah aktif (untuk Apache)
 
 5. *Akses Aplikasi*
    
    http://localhost:8000
-   
+   http://niseva-agro.infinityfree.me
+
 
 ## 💡 Fitur Utama
 
@@ -249,12 +262,16 @@ ProjectAkhir_PAW/
 - Password di-hash menggunakan algoritma yang aman
 - Validasi input untuk mencegah SQL Injection
 - Session management untuk autentikasi
-- CSRF protection (jika diimplementasikan)
+
+##  🚢 Deployment
+http://niseva-agro.infinityfree.me
 
 ## 📝 Catatan Pengembangan
 
 ### Kontributor
 - [nailakeisha](https://github.com/nailakeisha)
+- [Nikita Salsabila](https://github.com/nikitaasl)
+- [Sefina Ayudia]
 
 ### Versi
 - Current: 1.0.0
@@ -280,12 +297,9 @@ Nailakeisha - [@nailakeisha](https://github.com/nailakeisha)
 Project Link: [https://github.com/nailakeisha/ProjectAkhir_PAW](https://github.com/nailakeisha/ProjectAkhir_PAW)
 
 ## 🙏 Acknowledgments
+All open-source contributors
 
-- Dosen Pengampu Mata Kuliah PAW
-- Teman-teman kelas yang telah membantu
-- Dokumentasi PHP dan MySQL
-- Stack Overflow Community
+
 
 ---
 
-⭐ Jangan lupa untuk memberikan star jika project ini bermanfaat!
