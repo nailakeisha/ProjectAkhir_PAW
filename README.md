@@ -16,7 +16,7 @@ Aplikasi web manajemen investasi dan marketplace finansial yang dibangun menggun
 👥 Default User Accounts
 Admin Account
 Email: ayudia@gmail.com
-Password: ayudia123
+Password: sefina123
 Access: Full admin dashboard and product management
 
 Regular User Account
